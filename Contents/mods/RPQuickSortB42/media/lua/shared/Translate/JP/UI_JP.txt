@@ -1,0 +1,43 @@
+UI_JP = {
+  UI_3542556795_menu_entry_quick_sort = "クイックソート",
+  UI_3542556795_menu_entry_quick_sort_all = "すべてクイックソート",
+
+  UI_3542556795_player_error_no_containers = "周囲にコンテナが見当たりません。",
+  UI_3542556795_player_error_nothing_to_sort = "ソートしたいものが何もありません。",
+  UI_3542556795_player_error_nowhere_to_put = "これを置く場所が見当たりません。",
+  UI_3542556795_player_error_no_transfers_to_complete = "これらをどこに置けばいいのかわかりません。",
+
+  UI_3542556795_mod_name = "クイックソート",
+
+  UI_3542556795_general_settings_header = "一般設定",
+  UI_3542556795_sort_range_name = "ソート範囲タイル",
+  UI_3542556795_sort_range_tooltip = "アイテムをソートするためのコンテナを探す最大距離（タイル単位）。",
+
+  UI_3542556795_category_based_settings_header = "カテゴリーベース設定",
+  UI_3542556795_category_based_transfers_name = "カテゴリーベース転送を有効化",
+  UI_3542556795_category_based_transfers_tooltip = "カテゴリーベースの転送を有効/無効にします。これは同じアイテムを含むコンテナが見つからない場合でも、同じカテゴリーの複数のアイテムを含むコンテナが見つかった場合に試行されます。 <BR> 「アイテム」カテゴリーは非常に広く使用されているため、下で有効にしない限り、このカテゴリーのアイテムをこの方法でソートしません。",
+
+  UI_3542556795_stack_counts_as_one_name = "スタックを1アイテムとしてカウント",
+  UI_3542556795_stack_counts_as_one_tooltip = "有効にすると、コンテナ内のカテゴリの割合を計算する際にスタックを単一のアイテムとしてカウントします。 <BR> これにより、例えば200本のタバコがコンテナを「食品」コンテナとみなすことを基本的に保証するのを防ぎます。",
+
+  UI_3542556795_category_transfers_for_item_category_name = "「アイテム」カテゴリーのカテゴリーベース転送を有効化",
+  UI_3542556795_category_transfers_for_item_category_tooltip = "「アイテム」カテゴリーのアイテムに対するカテゴリーベースの転送を有効/無効にします。",
+
+  UI_3542556795_ignore_item_category_name = "アイテムカテゴリーを無視",
+  UI_3542556795_ignore_item_category_tooltip = "有効にすると、コンテナ内のアイテムカテゴリーの割合を計算する際に「アイテム」カテゴリーのアイテムをカウントしません。",
+
+  UI_3542556795_category_threshold_settings_header = "カテゴリーしきい値設定",
+  UI_3542556795_category_item_count_threshold_name = "カテゴリーアイテム数しきい値",
+  UI_3542556795_category_item_count_threshold_tooltip = "コンテナ内で見つける必要がある最小アイテム数で、潜在的にカテゴリーと一致していると見なされます。",
+
+  UI_3542556795_category_item_percentage_threshold_name = "カテゴリーアイテム割合しきい値",
+  UI_3542556795_category_item_percentage_threshold_tooltip = "カテゴリーと一致していると見なされるために必要な、少なくともcategory_item_count_thresholdアイテムを持つコンテナ内のアイテムの最小割合。",
+
+  UI_3542556795_food_settings_header = "食品設定",
+  UI_3542556795_special_food_treatment_name = "特別食品処理",
+  UI_3542556795_special_food_treatment_tooltip = "冷蔵庫/冷凍庫での食品アイテムのクイックソート用の特別処理を有効/無効にします。"
+
+  UI_3542556795_misc_settings_header = "その他の設定",
+  UI_3542556795_player_says_errors_name = "プレイヤーがエラーを言う",
+  UI_3542556795_player_says_errors_tooltip = "アイテムを置く場所が見つからない場合、近くにコンテナが見つからない場合、またはソート基準を満たすアイテムがない場合に、プレイヤーキャラクターが言います。"
+}

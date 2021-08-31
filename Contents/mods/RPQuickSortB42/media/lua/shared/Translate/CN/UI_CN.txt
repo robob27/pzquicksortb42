@@ -1,0 +1,43 @@
+UI_CN = {
+  UI_3542556795_menu_entry_quick_sort = "快速排序",
+  UI_3542556795_menu_entry_quick_sort_all = "全部快速排序",
+
+  UI_3542556795_player_error_no_containers = "我看不到周围有任何容器。",
+  UI_3542556795_player_error_nothing_to_sort = "我不想对这些东西进行排序。",
+  UI_3542556795_player_error_nowhere_to_put = "我找不到可以放置这个的地方。",
+  UI_3542556795_player_error_no_transfers_to_complete = "我不确定该把这些东西放在哪里。",
+
+  UI_3542556795_mod_name = "快速排序",
+
+  UI_3542556795_general_settings_header = "一般设置",
+  UI_3542556795_sort_range_name = "排序范围格数",
+  UI_3542556795_sort_range_tooltip = "搜索可排序物品容器的最大距离（以格数计算）。",
+
+  UI_3542556795_category_based_settings_header = "基于类别的设置",
+  UI_3542556795_category_based_transfers_name = "启用基于类别的物品转移",
+  UI_3542556795_category_based_transfers_tooltip = "启用/禁用基于类别的物品转移，当找不到含有相同物品的容器，但找到一个包含多个同类别物品的容器时，将尝试这种转移。<BR>除非在下方启用，否则不会尝试以这种方式对类别为"物品"的物品进行排序，因为这个类别使用范围过广。",
+
+  UI_3542556795_stack_counts_as_one_name = "堆叠计算为一个物品",
+  UI_3542556795_stack_counts_as_one_tooltip = "启用后，在计算容器内类别百分比时，一个堆叠会被视为一个物品。<BR>这可以防止，例如，200支香烟基本上确保容器被视为"食物"容器。",
+
+  UI_3542556795_category_transfers_for_item_category_name = "为"物品"类别启用基于类别的转移",
+  UI_3542556795_category_transfers_for_item_category_tooltip = "启用/禁用类别为"物品"的物品进行基于类别的转移。",
+
+  UI_3542556795_ignore_item_category_name = "忽略物品类别",
+  UI_3542556795_ignore_item_category_tooltip = "如果启用，在计算容器中存在的物品类别百分比时，将不会计算类别为"物品"的物品。",
+
+  UI_3542556795_category_threshold_settings_header = "类别阈值设置",
+  UI_3542556795_category_item_count_threshold_name = "类别物品数量阈值",
+  UI_3542556795_category_item_count_threshold_tooltip = "容器中需要找到的最小物品数量，才可能被视为符合某个类别。",
+
+  UI_3542556795_category_item_percentage_threshold_name = "类别物品百分比阈值",
+  UI_3542556795_category_item_percentage_threshold_tooltip = "容器中至少具有类别物品数量阈值的物品所需的最低百分比，才能被视为符合某个类别。",
+
+  UI_3542556795_food_settings_header = "食物设置",
+  UI_3542556795_special_food_treatment_name = "特殊食物处理",
+  UI_3542556795_special_food_treatment_tooltip = "启用/禁用对冰箱/冷冻箱中的食物项目进行快速排序的特殊处理。"
+
+  UI_3542556795_misc_settings_header = "其他设置",
+  UI_3542556795_player_says_errors_name = "玩家说出错误",
+  UI_3542556795_player_says_errors_tooltip = "当找不到放置物品的位置、附近找不到容器或没有物品符合排序条件时，玩家角色会说出错误信息。"
+}

@@ -1,0 +1,43 @@
+UI_KO = {
+  UI_3542556795_menu_entry_quick_sort = "빠른 정렬",
+  UI_3542556795_menu_entry_quick_sort_all = "모두 빠른 정렬",
+
+  UI_3542556795_player_error_no_containers = "주변에 컨테이너가 보이지 않습니다.",
+  UI_3542556795_player_error_nothing_to_sort = "이것들을 정렬하고 싶지 않습니다.",
+  UI_3542556795_player_error_nowhere_to_put = "이것을 놓을 곳이 보이지 않습니다.",
+  UI_3542556795_player_error_no_transfers_to_complete = "이것들을 어디에 둘지 모르겠습니다.",
+
+  UI_3542556795_mod_name = "빠른 정렬",
+
+  UI_3542556795_general_settings_header = "일반 설정",
+  UI_3542556795_sort_range_name = "정렬 범위 타일",
+  UI_3542556795_sort_range_tooltip = "아이템을 정렬할 컨테이너를 검색하는 최대 거리(타일 단위).",
+
+  UI_3542556795_category_based_settings_header = "카테고리 기반 설정",
+  UI_3542556795_category_based_transfers_name = "카테고리 기반 전송 활성화",
+  UI_3542556795_category_based_transfers_tooltip = "동일한 아이템이 있는 컨테이너가 없지만 같은 카테고리의 여러 아이템이 있는 컨테이너가 발견된 경우 시도되는 카테고리 기반 전송을 활성화/비활성화합니다. <BR> '아이템' 카테고리는 매우 광범위하게 사용되므로 아래에서 활성화하지 않는 한 이 방식으로 정렬을 시도하지 않습니다.",
+
+  UI_3542556795_stack_counts_as_one_name = "스택을 하나의 아이템으로 계산",
+  UI_3542556795_stack_counts_as_one_tooltip = "활성화하면 컨테이너의 카테고리 비율을 계산할 때 스택을 하나의 아이템으로 계산합니다. <BR> 이렇게 하면 예를 들어 200개의 담배가 그 컨테이너를 '음식' 컨테이너로 간주하도록 보장하는 것을 방지합니다.",
+
+  UI_3542556795_category_transfers_for_item_category_name = "'아이템' 카테고리에 대한 카테고리 기반 전송 활성화",
+  UI_3542556795_category_transfers_for_item_category_tooltip = "'아이템' 카테고리의 아이템에 대한 카테고리 기반 전송을 활성화/비활성화합니다.",
+
+  UI_3542556795_ignore_item_category_name = "아이템 카테고리 무시",
+  UI_3542556795_ignore_item_category_tooltip = "활성화하면 컨테이너에 있는 아이템 카테고리의 비율을 계산할 때 '아이템' 카테고리의 아이템을 계산하지 않습니다.",
+
+  UI_3542556795_category_threshold_settings_header = "카테고리 임계값 설정",
+  UI_3542556795_category_item_count_threshold_name = "카테고리 아이템 개수 임계값",
+  UI_3542556795_category_item_count_threshold_tooltip = "컨테이너에서 카테고리와 일치하는 것으로 간주되기 위해 필요한 최소 아이템 수입니다.",
+
+  UI_3542556795_category_item_percentage_threshold_name = "카테고리 아이템 비율 임계값",
+  UI_3542556795_category_item_percentage_threshold_tooltip = "카테고리와 일치하는 것으로 간주되기 위해 필요한, 최소 category_item_count_threshold 이상의 아이템이 있는 컨테이너 내 아이템의 최소 비율입니다.",
+
+  UI_3542556795_food_settings_header = "음식 설정",
+  UI_3542556795_special_food_treatment_name = "음식 특별 처리",
+  UI_3542556795_special_food_treatment_tooltip = "냉장고/냉동고와 함께 음식 아이템을 빠르게 정렬하기 위한 특별 처리를 활성화/비활성화합니다."
+
+  UI_3542556795_misc_settings_header = "기타 설정",
+  UI_3542556795_player_says_errors_name = "플레이어 오류 표시",
+  UI_3542556795_player_says_errors_tooltip = "아이템을 놓을 곳을 찾을 수 없거나, 근처에 컨테이너가 없거나, 정렬 기준을 충족하는 아이템이 없을 때 플레이어 캐릭터가 말합니다."
+}

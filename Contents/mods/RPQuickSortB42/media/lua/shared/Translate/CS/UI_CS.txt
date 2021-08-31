@@ -1,0 +1,43 @@
+UI_CS = {
+  UI_3542556795_menu_entry_quick_sort = "Rychlé třídění",
+  UI_3542556795_menu_entry_quick_sort_all = "Rychlé třídění všeho",
+
+  UI_3542556795_player_error_no_containers = "Nevidím kolem žádné kontejnery.",
+  UI_3542556795_player_error_nothing_to_sort = "Nechci třídit žádnou z těchto věcí.",
+  UI_3542556795_player_error_nowhere_to_put = "Nevidím, kam to položit.",
+  UI_3542556795_player_error_no_transfers_to_complete = "Nejsem si jistý, kam to všechno dát.",
+
+  UI_3542556795_mod_name = "Rychlé třídění",
+
+  UI_3542556795_general_settings_header = "Obecná nastavení",
+  UI_3542556795_sort_range_name = "Dosah třídění v dlaždicích",
+  UI_3542556795_sort_range_tooltip = "Maximální vzdálenost (v dlaždicích) pro hledání kontejnerů k třídění předmětů.",
+
+  UI_3542556795_category_based_settings_header = "Nastavení podle kategorie",
+  UI_3542556795_category_based_transfers_name = "Povolit přesuny podle kategorie",
+  UI_3542556795_category_based_transfers_tooltip = "Povolí/zakáže přesuny podle kategorie, které jsou použity, pokud nebyl nalezen žádný kontejner se stejným předmětem, ale byl nalezen kontejner s několika předměty stejné kategorie. <BR> Nepokouší se třídit předměty s kategorií 'Předmět' tímto způsobem, protože je používána příliš široce, pokud není povoleno níže.",
+
+  UI_3542556795_stack_counts_as_one_name = "Balík se počítá jako jedna položka",
+  UI_3542556795_stack_counts_as_one_tooltip = "Pokud je povoleno, balík se počítá jako jedna položka při výpočtu procentuálního zastoupení kategorií v kontejneru. <BR> To zabraňuje například tomu, aby 200 cigaret prakticky zaručilo, že kontejner bude považován za kontejner s 'Jídlem'.",
+
+  UI_3542556795_category_transfers_for_item_category_name = "Povolit přesuny podle kategorie pro kategorii 'Předmět'",
+  UI_3542556795_category_transfers_for_item_category_tooltip = "Povolí/zakáže přesuny podle kategorie pro předměty s kategorií 'Předmět'.",
+
+  UI_3542556795_ignore_item_category_name = "Ignorovat kategorii předmětu",
+  UI_3542556795_ignore_item_category_tooltip = "Pokud je povoleno, nebudou se počítat předměty s kategorií 'Předmět' při výpočtu procentuálního zastoupení kategorií předmětů v kontejneru.",
+
+  UI_3542556795_category_threshold_settings_header = "Nastavení prahových hodnot kategorie",
+  UI_3542556795_category_item_count_threshold_name = "Prahová hodnota počtu položek v kategorii",
+  UI_3542556795_category_item_count_threshold_tooltip = "Minimální počet položek, které musí být nalezeny v kontejneru, aby mohl být potenciálně považován za odpovídající kategorii.",
+
+  UI_3542556795_category_item_percentage_threshold_name = "Prahová hodnota procentuálního zastoupení kategorie",
+  UI_3542556795_category_item_percentage_threshold_tooltip = "Minimální procentuální zastoupení položek v kontejneru s alespoň počtem položek rovnajícím se prahové hodnotě počtu položek v kategorii, které je požadováno pro považování za odpovídající kategorii.",
+
+  UI_3542556795_food_settings_header = "Nastavení jídla",
+  UI_3542556795_special_food_treatment_name = "Speciální zpracování jídla",
+  UI_3542556795_special_food_treatment_tooltip = "Povolí/zakáže speciální zpracování pro rychlé třídění potravin do ledniček/mrazniček."
+
+  UI_3542556795_misc_settings_header = "Různá nastavení",
+  UI_3542556795_player_says_errors_name = "Postava říká chyby",
+  UI_3542556795_player_says_errors_tooltip = "Postava hráče říká, když nelze najít místo pro předmět, v blízkosti nejsou nalezeny žádné kontejnery nebo žádné předměty nesplňují kritéria pro třídění."
+}

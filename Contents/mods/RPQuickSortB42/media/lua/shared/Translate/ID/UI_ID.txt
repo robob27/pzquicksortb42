@@ -1,0 +1,43 @@
+UI_ID = {
+  UI_options_3542556795_menu_entry_quick_sort = "Sortir Cepat",
+  UI_options_3542556795_menu_entry_quick_sort_all = "Sortir Semua Cepat",
+
+  UI_options_3542556795_player_error_no_containers = "Saya tidak melihat wadah di sekitar.",
+  UI_options_3542556795_player_error_nothing_to_sort = "Saya tidak ingin menyortir barang-barang ini.",
+  UI_options_3542556795_player_error_nowhere_to_put = "Saya tidak melihat tempat untuk meletakkan ini.",
+  UI_options_3542556795_player_error_no_transfers_to_complete = "Saya tidak yakin di mana harus meletakkan semua ini.",
+
+  UI_options_3542556795_mod_name = "Sortir Cepat",
+
+  UI_options_3542556795_general_settings_header = "Pengaturan Umum",
+  UI_options_3542556795_sort_range_name = "Jangkauan Sortir dalam Petak",
+  UI_options_3542556795_sort_range_tooltip = "Jarak maksimum (dalam petak) untuk mencari wadah untuk menyortir barang.",
+
+  UI_options_3542556795_category_based_settings_header = "Pengaturan Berbasis Kategori",
+  UI_options_3542556795_category_based_transfers_name = "Aktifkan Transfer Berbasis Kategori",
+  UI_options_3542556795_category_based_transfers_tooltip = "Aktifkan/nonaktifkan transfer berbasis kategori yang dicoba jika tidak ada wadah yang ditemukan dengan barang yang sama persis, tetapi ada wadah yang ditemukan dengan beberapa barang dari kategori yang sama. <BR> Tidak mencoba menyortir barang dengan kategori 'Item' dengan cara ini karena kategori tersebut digunakan secara luas, kecuali diaktifkan di bawah ini.",
+
+  UI_options_3542556795_stack_counts_as_one_name = "Tumpukan Dihitung Sebagai Satu Barang",
+  UI_options_3542556795_stack_counts_as_one_tooltip = "Jika diaktifkan, tumpukan dihitung sebagai satu barang saat menghitung persentase kategori dalam wadah. <BR> Ini mencegah, misalnya, 200 rokok pada dasarnya menjamin bahwa wadah tersebut dianggap sebagai wadah 'Makanan'.",
+
+  UI_options_3542556795_category_transfers_for_item_category_name = "Aktifkan Transfer Berbasis Kategori untuk Kategori 'Item'",
+  UI_options_3542556795_category_transfers_for_item_category_tooltip = "Aktifkan/nonaktifkan transfer berbasis kategori untuk barang dengan kategori 'Item'.",
+
+  UI_options_3542556795_ignore_item_category_name = "Abaikan Kategori Item",
+  UI_options_3542556795_ignore_item_category_tooltip = "Jika diaktifkan, tidak akan menghitung barang dengan kategori 'Item' saat menghitung persentase kategori barang yang ada dalam wadah.",
+
+  UI_options_3542556795_category_threshold_settings_header = "Pengaturan Ambang Batas Kategori",
+  UI_options_3542556795_category_item_count_threshold_name = "Ambang Jumlah Barang Kategori",
+  UI_options_3542556795_category_item_count_threshold_tooltip = "Jumlah minimum barang yang perlu ditemukan dalam wadah agar bisa dipertimbangkan sebagai cocok dengan suatu kategori.",
+
+  UI_options_3542556795_category_item_percentage_threshold_name = "Ambang Persentase Barang Kategori",
+  UI_options_3542556795_category_item_percentage_threshold_tooltip = "Persentase minimum barang dalam wadah dengan setidaknya category_item_count_threshold barang yang diperlukan agar dianggap cocok dengan suatu kategori.",
+
+  UI_options_3542556795_food_settings_header = "Pengaturan Makanan",
+  UI_options_3542556795_special_food_treatment_name = "Perlakuan Khusus untuk Makanan",
+  UI_options_3542556795_special_food_treatment_tooltip = "Mengaktifkan/menonaktifkan perlakuan khusus untuk penyortiran cepat makanan dengan kulkas/freezer."
+
+  UI_options_3542556795_misc_settings_header = "Pengaturan Lain-Lain",
+  UI_options_3542556795_player_says_errors_name = "Pemain Mengucapkan Kesalahan",
+  UI_options_3542556795_player_says_errors_tooltip = "Karakter pemain mengatakan ketika tempat tidak dapat ditemukan untuk suatu barang, tidak ada wadah yang ditemukan di sekitar, atau tidak ada barang yang memenuhi kriteria penyortiran."
+}

@@ -1,0 +1,43 @@
+UI_PH = {
+  UI_3542556795_menu_entry_quick_sort = "Mabilisang Pag-ayos",
+  UI_3542556795_menu_entry_quick_sort_all = "Ayusin Lahat Agad",
+
+  UI_3542556795_player_error_no_containers = "Wala akong nakikitang lalagyan sa paligid.",
+  UI_3542556795_player_error_nothing_to_sort = "Ayokong ayusin ang mga bagay na ito.",
+  UI_3542556795_player_error_nowhere_to_put = "Wala akong nakikitang mapaglalagyan nito.",
+  UI_3542556795_player_error_no_transfers_to_complete = "Hindi ako sigurado kung saan ilalagay ang mga ito.",
+
+  UI_3542556795_mod_name = "Mabilisang Pag-ayos",
+
+  UI_3542556795_general_settings_header = "Pangkalahatang Mga Setting",
+  UI_3542556795_sort_range_name = "Layo ng Pag-aayos",
+  UI_3542556795_sort_range_tooltip = "Ang pinakamalayong distansya (sa tiles) upang maghanap ng mga lalagyan na paglalagyan ng mga aytem.",
+
+  UI_3542556795_category_based_settings_header = "Mga Setting na Base sa Kategorya",
+  UI_3542556795_category_based_transfers_name = "Paganahin ang Paglilipat Batay sa Kategorya",
+  UI_3542556795_category_based_transfers_tooltip = "Paganahin/Huwag paganahin ang paglilipat batay sa kategorya na sinusubukan kapag walang nakitang lalagyan na may eksaktong parehong aytem, ngunit may nahanap na lalagyan na may ilang aytem na pareho ang kategorya. <BR> Hindi sinusubukang ayusin ang mga aytem sa kategoryang 'Item' sa ganitong paraan dahil malawak ang gamit nito, maliban kung pinagana sa ibaba.",
+
+  UI_3542556795_stack_counts_as_one_name = "Isang Aytem Lang ang Pagbilang sa Stack",
+  UI_3542556795_stack_counts_as_one_tooltip = "Kapag pinagana, ang isang stack ay binibilang na iisang aytem lamang kapag kinakalkula ang porsyento ng mga kategorya sa isang lalagyan. <BR> Ito ay pumipigil, halimbawa, sa 200 sigarilyo na halos tiyak na magtatag sa lalagyan bilang isang lalagyan ng 'Pagkain'.",
+
+  UI_3542556795_category_transfers_for_item_category_name = "Paganahin ang Paglilipat Base sa Kategorya para sa 'Item' na Kategorya",
+  UI_3542556795_category_transfers_for_item_category_tooltip = "Paganahin/Huwag paganahin ang paglilipat batay sa kategorya para sa mga aytem na may kategoryang 'Item'.",
+
+  UI_3542556795_ignore_item_category_name = "Huwag Pansinin ang Item Kategorya",
+  UI_3542556795_ignore_item_category_tooltip = "Kung pinagana, hindi bibilangin ang mga aytem na may kategoryang 'Item' kapag kinakalkula ang porsyento ng mga kategorya ng aytem na naroroon sa isang lalagyan.",
+
+  UI_3542556795_category_threshold_settings_header = "Mga Setting ng Threshold ng Kategorya",
+  UI_3542556795_category_item_count_threshold_name = "Threshold ng Bilang ng Aytem sa Kategorya",
+  UI_3542556795_category_item_count_threshold_tooltip = "Ang pinakamababang bilang ng mga aytem na kailangang matagpuan sa isang lalagyan upang posibleng maisaalang-alang na tumutugma sa isang kategorya.",
+
+  UI_3542556795_category_item_percentage_threshold_name = "Threshold ng Porsyento ng Aytem sa Kategorya",
+  UI_3542556795_category_item_percentage_threshold_tooltip = "Ang pinakamababang porsyento ng mga aytem sa isang lalagyan na may hindi bababa sa category_item_count_threshold na mga aytem na kinakailangan upang maisaalang-alang na tumutugma sa isang kategorya.",
+
+  UI_3542556795_food_settings_header = "Mga Setting ng Pagkain",
+  UI_3542556795_special_food_treatment_name = "Espesyal na Pagtrato sa Pagkain",
+  UI_3542556795_special_food_treatment_tooltip = "Paganahin/Huwag paganahin ang espesyal na pagtrato para sa mabilisang pag-aayos ng mga pagkain gamit ang mga pridyider/prayser."
+
+  UI_3542556795_misc_settings_header = "Iba Pang Mga Setting",
+  UI_3542556795_player_says_errors_name = "Mgsabi ng Error ang Manlalaro",
+  UI_3542556795_player_says_errors_tooltip = "Nagsasabi ang karakter ng manlalaro kapag walang matagpuang lugar para sa isang aytem, walang nakitang mga lalagyan sa malapit, o walang mga aytem na nakakatugon sa pamantayan ng pag-aayos."
+}

@@ -1,0 +1,43 @@
+UI_AR = {
+  UI_3542556795_menu_entry_quick_sort = "Ordenar Rápido",
+  UI_3542556795_menu_entry_quick_sort_all = "Ordenar Todo Rápido",
+
+  UI_3542556795_player_error_no_containers = "No veo ningún contenedor cerca.",
+  UI_3542556795_player_error_nothing_to_sort = "No quiero ordenar ninguna de estas cosas.",
+  UI_3542556795_player_error_nowhere_to_put = "No veo dónde poner esto.",
+  UI_3542556795_player_error_no_transfers_to_complete = "No estoy seguro dónde poner nada de esto.",
+
+  UI_3542556795_mod_name = "Ordenar Rápido",
+
+  UI_3542556795_general_settings_header = "Configuración General",
+  UI_3542556795_sort_range_name = "Rango de Búsqueda en Baldosas",
+  UI_3542556795_sort_range_tooltip = "La distancia máxima (en baldosas) para buscar contenedores donde ordenar objetos.",
+
+  UI_3542556795_category_based_settings_header = "Configuración Basada en Categorías",
+  UI_3542556795_category_based_transfers_name = "Activar Transferencias por Categoría",
+  UI_3542556795_category_based_transfers_tooltip = "Activa/desactiva las transferencias basadas en categorías que se intentan si no se encuentra un contenedor con el mismo objeto exacto, pero hay un contenedor con varios objetos de la misma categoría. <BR> No intenta ordenar objetos con categoría 'Objeto' de esta manera porque se usa muy ampliamente, a menos que se active abajo.",
+
+  UI_3542556795_stack_counts_as_one_name = "Pila Cuenta como Un Objeto",
+  UI_3542556795_stack_counts_as_one_tooltip = "Cuando está activado, una pila cuenta como un solo objeto al calcular el porcentaje de categorías en un contenedor. <BR> Esto evita, por ejemplo, que 200 cigarrillos prácticamente garanticen que el contenedor sea considerado un contenedor de 'Comida'.",
+
+  UI_3542556795_category_transfers_for_item_category_name = "Activar Transferencias por Categoría para Categoría 'Objeto'",
+  UI_3542556795_category_transfers_for_item_category_tooltip = "Activa/desactiva las transferencias basadas en categorías para objetos con categoría 'Objeto'.",
+
+  UI_3542556795_ignore_item_category_name = "Ignorar Categoría Objeto",
+  UI_3542556795_ignore_item_category_tooltip = "Si está activado, no contará objetos con categoría 'Objeto' al calcular el porcentaje de categorías de objetos presentes en un contenedor.",
+
+  UI_3542556795_category_threshold_settings_header = "Configuración de Umbrales de Categoría",
+  UI_3542556795_category_item_count_threshold_name = "Umbral de Cantidad de Objetos por Categoría",
+  UI_3542556795_category_item_count_threshold_tooltip = "El número mínimo de objetos que deben encontrarse en un contenedor para que potencialmente se considere como coincidente con una categoría.",
+
+  UI_3542556795_category_item_percentage_threshold_name = "Umbral de Porcentaje de Objetos por Categoría",
+  UI_3542556795_category_item_percentage_threshold_tooltip = "El porcentaje mínimo de objetos en un contenedor con al menos el umbral de cantidad de objetos requerido para ser considerado como coincidente con una categoría.",
+
+  UI_3542556795_food_settings_header = "Configuración de Alimentos",
+  UI_3542556795_special_food_treatment_name = "Tratamiento Especial para Alimentos",
+  UI_3542556795_special_food_treatment_tooltip = "Activa/desactiva el tratamiento especial para ordenar rápidamente alimentos con heladeras/congeladores.",
+
+  UI_3542556795_misc_settings_header = "Configuración Miscelánea",
+  UI_3542556795_player_says_errors_name = "Personaje Dice Errores",
+  UI_3542556795_player_says_errors_tooltip = "El personaje del jugador dice cuando no se puede encontrar un lugar para un objeto, no se encuentran contenedores cercanos o ningún objeto cumple con los criterios de clasificación."
+}

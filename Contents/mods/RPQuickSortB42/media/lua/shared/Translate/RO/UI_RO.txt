@@ -1,0 +1,43 @@
+UI_RO = {
+  UI_3542556795_menu_entry_quick_sort = "Sortare Rapidă",
+  UI_3542556795_menu_entry_quick_sort_all = "Sortare Rapidă Total",
+
+  UI_3542556795_player_error_no_containers = "Nu văd containere în jur.",
+  UI_3542556795_player_error_nothing_to_sort = "Nu vreau să sortez aceste lucruri.",
+  UI_3542556795_player_error_nowhere_to_put = "Nu văd unde să pun asta.",
+  UI_3542556795_player_error_no_transfers_to_complete = "Nu sunt sigur unde să pun toate acestea.",
+
+  UI_3542556795_mod_name = "Sortare Rapidă",
+
+  UI_3542556795_general_settings_header = "Setări Generale",
+  UI_3542556795_sort_range_name = "Distanța de Sortare în Celule",
+  UI_3542556795_sort_range_tooltip = "Distanța maximă (în celule) pentru a căuta containere în care să sortați obiectele.",
+
+  UI_3542556795_category_based_settings_header = "Setări Bazate pe Categorii",
+  UI_3542556795_category_based_transfers_name = "Activare Transfer Bazat pe Categorii",
+  UI_3542556795_category_based_transfers_tooltip = "Activează/dezactivează transferurile bazate pe categorii care sunt încercate dacă nu se găsește niciun container cu exact același obiect, dar există un container găsit cu mai multe obiecte din aceeași categorie. <BR> Nu încearcă să sorteze obiecte cu categoria 'Item' în acest mod deoarece este folosită foarte larg, decât dacă este activat mai jos.",
+
+  UI_3542556795_stack_counts_as_one_name = "Stiva Contează ca Un Obiect",
+  UI_3542556795_stack_counts_as_one_tooltip = "Când este activat, o stivă se contorizează ca un singur obiect la calcularea procentajului categoriilor într-un container. <BR> Acest lucru previne, de exemplu, ca 200 de țigări să garanteze practic că containerul este considerat un container de 'Mâncare'.",
+
+  UI_3542556795_category_transfers_for_item_category_name = "Activare Transfer Bazat pe Categorii pentru Categoria 'Item'",
+  UI_3542556795_category_transfers_for_item_category_tooltip = "Activează/dezactivează transferurile bazate pe categorii pentru obiectele cu categoria 'Item'.",
+
+  UI_3542556795_ignore_item_category_name = "Ignoră Categoria 'Item'",
+  UI_3542556795_ignore_item_category_tooltip = "Dacă este activat, nu va număra obiectele cu categoria 'Item' când calculează procentajul categoriilor de obiecte prezente într-un container.",
+
+  UI_3542556795_category_threshold_settings_header = "Setări Prag pentru Categorii",
+  UI_3542556795_category_item_count_threshold_name = "Prag pentru Numărul de Obiecte din Categorie",
+  UI_3542556795_category_item_count_threshold_tooltip = "Numărul minim de obiecte care trebuie găsite într-un container pentru a fi potențial considerat ca potrivit unei categorii.",
+
+  UI_3542556795_category_item_percentage_threshold_name = "Prag pentru Procentajul de Obiecte din Categorie",
+  UI_3542556795_category_item_percentage_threshold_tooltip = "Procentajul minim de obiecte într-un container cu cel puțin category_item_count_threshold obiecte necesare pentru a fi considerat ca potrivit unei categorii.",
+
+  UI_3542556795_food_settings_header = "Setări pentru Mâncare",
+  UI_3542556795_special_food_treatment_name = "Tratament Special pentru Mâncare",
+  UI_3542556795_special_food_treatment_tooltip = "Activează/dezactivează tratamentul special pentru sortarea rapidă a alimentelor cu frigidere/congelatoare."
+
+  UI_3542556795_misc_settings_header = "Setări Diverse",
+  UI_3542556795_player_says_errors_name = "Jucătorul Spune Erori",
+  UI_3542556795_player_says_errors_tooltip = "Personajul jucătorului spune când nu poate fi găsit un loc pentru un obiect, nu sunt găsite containere în apropiere, sau niciun obiect nu îndeplinește criteriile de sortare."
+}

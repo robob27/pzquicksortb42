@@ -1,0 +1,43 @@
+UI_DE = {
+  UI_3542556795_menu_entry_quick_sort = "Schnellsortierung",
+  UI_3542556795_menu_entry_quick_sort_all = "Alle Schnellsortieren",
+
+  UI_3542556795_player_error_no_containers = "Ich sehe keine Behälter in der Nähe.",
+  UI_3542556795_player_error_nothing_to_sort = "Ich möchte nichts davon sortieren.",
+  UI_3542556795_player_error_nowhere_to_put = "Ich sehe keinen Platz, um das hier abzulegen.",
+  UI_3542556795_player_error_no_transfers_to_complete = "Ich bin mir nicht sicher, wo ich das alles hinlegen soll.",
+
+  UI_3542556795_mod_name = "Schnellsortierung",
+
+  UI_3542556795_general_settings_header = "Allgemeine Einstellungen",
+  UI_3542556795_sort_range_name = "Sortierreichweite in Kacheln",
+  UI_3542556795_sort_range_tooltip = "Die maximale Entfernung (in Kacheln), um nach Behältern zum Sortieren von Gegenständen zu suchen.",
+
+  UI_3542556795_category_based_settings_header = "Kategoriebasierte Einstellungen",
+  UI_3542556795_category_based_transfers_name = "Kategoriebasierte Übertragungen aktivieren",
+  UI_3542556795_category_based_transfers_tooltip = "Aktiviert/deaktiviert kategoriebasierte Übertragungen, die versucht werden, wenn kein Behälter mit genau demselben Gegenstand gefunden wird, aber ein Behälter mit mehreren Gegenständen derselben Kategorie gefunden wird. <BR> Versucht nicht, Gegenstände mit der Kategorie 'Gegenstand' auf diese Weise zu sortieren, da sie so umfassend verwendet wird, es sei denn, unten aktiviert.",
+
+  UI_3542556795_stack_counts_as_one_name = "Stapel zählt als ein Gegenstand",
+  UI_3542556795_stack_counts_as_one_tooltip = "Wenn aktiviert, zählt ein Stapel als ein einzelner Gegenstand bei der Berechnung des Prozentsatzes der Kategorien in einem Behälter. <BR> Dies verhindert zum Beispiel, dass 200 Zigaretten praktisch garantieren, dass der Behälter als 'Lebensmittel'-Behälter betrachtet wird.",
+
+  UI_3542556795_category_transfers_for_item_category_name = "Kategoriebasierte Übertragungen für 'Gegenstand'-Kategorie aktivieren",
+  UI_3542556795_category_transfers_for_item_category_tooltip = "Aktiviert/deaktiviert kategoriebasierte Übertragungen für Gegenstände mit der Kategorie 'Gegenstand'.",
+
+  UI_3542556795_ignore_item_category_name = "Gegenstandskategorie ignorieren",
+  UI_3542556795_ignore_item_category_tooltip = "Wenn aktiviert, werden Gegenstände mit der Kategorie 'Gegenstand' bei der Berechnung des Prozentsatzes der vorhandenen Gegenstandskategorien in einem Behälter nicht gezählt.",
+
+  UI_3542556795_category_threshold_settings_header = "Einstellungen für Kategorieschwellenwert",
+  UI_3542556795_category_item_count_threshold_name = "Schwellenwert für Gegenstandsanzahl in Kategorie",
+  UI_3542556795_category_item_count_threshold_tooltip = "Die Mindestanzahl an Gegenständen, die in einem Behälter gefunden werden müssen, um möglicherweise als passend zu einer Kategorie betrachtet zu werden.",
+
+  UI_3542556795_category_item_percentage_threshold_name = "Schwellenwert für Gegenstandsprozentsatz in Kategorie",
+  UI_3542556795_category_item_percentage_threshold_tooltip = "Der Mindestprozentsatz an Gegenständen in einem Behälter mit mindestens category_item_count_threshold Gegenständen, der erforderlich ist, um als passend zu einer Kategorie betrachtet zu werden.",
+
+  UI_3542556795_food_settings_header = "Lebensmitteleinstellungen",
+  UI_3542556795_special_food_treatment_name = "Spezielle Lebensmittelbehandlung",
+  UI_3542556795_special_food_treatment_tooltip = "Aktiviert/deaktiviert spezielle Behandlung für die Schnellsortierung von Lebensmitteln mit Kühlschränken/Gefriertruhen."
+
+  UI_3542556795_misc_settings_header = "Verschiedene Einstellungen",
+  UI_3542556795_player_says_errors_name = "Spieler spricht Fehler aus",
+  UI_3542556795_player_says_errors_tooltip = "Spielercharakter sagt, wenn kein Platz für einen Gegenstand gefunden werden kann, keine Behälter in der Nähe gefunden werden oder keine Gegenstände die Sortierkriterien erfüllen."
+}

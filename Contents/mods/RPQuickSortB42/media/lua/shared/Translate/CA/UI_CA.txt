@@ -1,0 +1,43 @@
+UI_CA = {
+  UI_3542556795_menu_entry_quick_sort = "Ordenació Ràpida",
+  UI_3542556795_menu_entry_quick_sort_all = "Ordenació Ràpida de Tot",
+
+  UI_3542556795_player_error_no_containers = "No veig cap contenidor al voltant.",
+  UI_3542556795_player_error_nothing_to_sort = "No vull ordenar cap d'aquestes coses.",
+  UI_3542556795_player_error_nowhere_to_put = "No veig on posar això.",
+  UI_3542556795_player_error_no_transfers_to_complete = "No estic segur on posar res d'això.",
+
+  UI_3542556795_mod_name = "Ordenació Ràpida",
+
+  UI_3542556795_general_settings_header = "Configuració General",
+  UI_3542556795_sort_range_name = "Rang de Rajoles d'Ordenació",
+  UI_3542556795_sort_range_tooltip = "La distància màxima (en rajoles) per buscar contenidors on ordenar els objectes.",
+
+  UI_3542556795_category_based_settings_header = "Configuració Basada en Categories",
+  UI_3542556795_category_based_transfers_name = "Activar Transferències per Categoria",
+  UI_3542556795_category_based_transfers_tooltip = "Activa/desactiva les transferències basades en categories que s'intenten si no es troba un contenidor amb el mateix objecte exacte, però hi ha un contenidor amb diversos objectes de la mateixa categoria. <BR> No intenta ordenar objectes amb la categoria 'Objecte' d'aquesta manera perquè s'utilitza molt àmpliament, llevat que s'activi a continuació.",
+
+  UI_3542556795_stack_counts_as_one_name = "La Pila Compta com Un Objecte",
+  UI_3542556795_stack_counts_as_one_tooltip = "Quan està activat, una pila compta com un sol objecte en calcular el percentatge de categories en un contenidor. <BR> Això evita, per exemple, que 200 cigarrets pràcticament garanteixin que el contenidor es consideri un contenidor d'Aliments.",
+
+  UI_3542556795_category_transfers_for_item_category_name = "Activar Transferències per Categoria per a la Categoria 'Objecte'",
+  UI_3542556795_category_transfers_for_item_category_tooltip = "Activa/desactiva les transferències basades en categories per als objectes amb la categoria 'Objecte'.",
+
+  UI_3542556795_ignore_item_category_name = "Ignorar Categoria Objecte",
+  UI_3542556795_ignore_item_category_tooltip = "Si està activat, no comptarà objectes amb la categoria 'Objecte' en calcular el percentatge de categories d'objectes presents en un contenidor.",
+
+  UI_3542556795_category_threshold_settings_header = "Configuració de Llindars de Categoria",
+  UI_3542556795_category_item_count_threshold_name = "Llindar de Recompte d'Objectes per Categoria",
+  UI_3542556795_category_item_count_threshold_tooltip = "El nombre mínim d'objectes que s'han de trobar en un contenidor perquè es consideri potencialment com a coincident amb una categoria.",
+
+  UI_3542556795_category_item_percentage_threshold_name = "Llindar de Percentatge d'Objectes per Categoria",
+  UI_3542556795_category_item_percentage_threshold_tooltip = "El percentatge mínim d'objectes en un contenidor amb almenys el llindar de recompte d'objectes necessari per ser considerat com a coincident amb una categoria.",
+
+  UI_3542556795_food_settings_header = "Configuració d'Aliments",
+  UI_3542556795_special_food_treatment_name = "Tractament Especial per a Aliments",
+  UI_3542556795_special_food_treatment_tooltip = "Activa/desactiva el tractament especial per a l'ordenació ràpida d'aliments amb neveres/congeladors.",
+
+  UI_3542556795_misc_settings_header = "Configuració Miscel·lània",
+  UI_3542556795_player_says_errors_name = "El Personatge Diu Errors",
+  UI_3542556795_player_says_errors_tooltip = "El personatge del jugador diu quan no es pot trobar un lloc per a un objecte, no es troben contenidors propers o cap objecte compleix amb els criteris de classificació."
+}

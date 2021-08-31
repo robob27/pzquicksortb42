@@ -1,0 +1,43 @@
+UI_FR = {
+  UI_3542556795_menu_entry_quick_sort = "Tri Rapide",
+  UI_3542556795_menu_entry_quick_sort_all = "Tout Trier Rapidement",
+
+  UI_3542556795_player_error_no_containers = "Je ne vois pas de conteneurs aux alentours.",
+  UI_3542556795_player_error_nothing_to_sort = "Je ne veux pas trier ces affaires.",
+  UI_3542556795_player_error_nowhere_to_put = "Je ne vois pas où mettre ça.",
+  UI_3542556795_player_error_no_transfers_to_complete = "Je ne sais pas où mettre tout ça.",
+
+  UI_3542556795_mod_name = "Tri Rapide",
+
+  UI_3542556795_general_settings_header = "Paramètres Généraux",
+  UI_3542556795_sort_range_name = "Portée de Tri en Cases",
+  UI_3542556795_sort_range_tooltip = "La distance maximale (en cases) pour rechercher des conteneurs où trier les objets.",
+
+  UI_3542556795_category_based_settings_header = "Paramètres Basés sur les Catégories",
+  UI_3542556795_category_based_transfers_name = "Activer les Transferts par Catégorie",
+  UI_3542556795_category_based_transfers_tooltip = "Active/désactive les transferts basés sur les catégories qui sont tentés si aucun conteneur n'est trouvé avec exactement le même objet, mais qu'un conteneur est trouvé avec plusieurs objets de la même catégorie. <BR> N'essaie pas de trier les objets avec la catégorie 'Objet' de cette façon car elle est utilisée trop largement, sauf si activé ci-dessous.",
+
+  UI_3542556795_stack_counts_as_one_name = "La Pile Compte comme Un Seul Objet",
+  UI_3542556795_stack_counts_as_one_tooltip = "Lorsqu'activé, une pile compte comme un seul objet lors du calcul du pourcentage des catégories dans un conteneur. <BR> Cela empêche, par exemple, 200 cigarettes de pratiquement garantir que le conteneur soit considéré comme un conteneur de 'Nourriture'.",
+
+  UI_3542556795_category_transfers_for_item_category_name = "Activer les Transferts par Catégorie pour la Catégorie 'Objet'",
+  UI_3542556795_category_transfers_for_item_category_tooltip = "Active/désactive les transferts basés sur les catégories pour les objets avec la catégorie 'Objet'.",
+
+  UI_3542556795_ignore_item_category_name = "Ignorer la Catégorie Objet",
+  UI_3542556795_ignore_item_category_tooltip = "Si activé, ne compte pas les objets avec la catégorie 'Objet' lors du calcul du pourcentage des catégories d'objets présentes dans un conteneur.",
+
+  UI_3542556795_category_threshold_settings_header = "Paramètres de Seuil de Catégorie",
+  UI_3542556795_category_item_count_threshold_name = "Seuil de Nombre d'Objets par Catégorie",
+  UI_3542556795_category_item_count_threshold_tooltip = "Le nombre minimum d'objets qui doivent être trouvés dans un conteneur pour être potentiellement considéré comme correspondant à une catégorie.",
+
+  UI_3542556795_category_item_percentage_threshold_name = "Seuil de Pourcentage d'Objets par Catégorie",
+  UI_3542556795_category_item_percentage_threshold_tooltip = "Le pourcentage minimum d'objets dans un conteneur avec au moins category_item_count_threshold objets requis pour être considéré comme correspondant à une catégorie.",
+
+  UI_3542556795_food_settings_header = "Paramètres de Nourriture",
+  UI_3542556795_special_food_treatment_name = "Traitement Spécial de la Nourriture",
+  UI_3542556795_special_food_treatment_tooltip = "Active/désactive le traitement spécial pour le tri rapide des aliments avec les réfrigérateurs/congélateurs."
+
+  UI_3542556795_misc_settings_header = "Paramètres Divers",
+  UI_3542556795_player_says_errors_name = "Le Joueur Énonce les Erreurs",
+  UI_3542556795_player_says_errors_tooltip = "Le personnage du joueur dit quand un emplacement ne peut pas être trouvé pour un objet, qu'aucun conteneur n'est trouvé à proximité, ou qu'aucun objet ne répond aux critères de tri."
+}

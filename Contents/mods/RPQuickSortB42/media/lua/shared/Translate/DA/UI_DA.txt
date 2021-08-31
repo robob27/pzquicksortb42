@@ -1,0 +1,43 @@
+UI_DA = {
+  UI_3542556795_menu_entry_quick_sort = "Hurtig Sortering",
+  UI_3542556795_menu_entry_quick_sort_all = "Hurtig Sortering Alle",
+
+  UI_3542556795_player_error_no_containers = "Jeg kan ikke se nogen beholdere i nærheden.",
+  UI_3542556795_player_error_nothing_to_sort = "Jeg vil ikke sortere noget af dette.",
+  UI_3542556795_player_error_nowhere_to_put = "Jeg kan ikke se noget sted at lægge dette.",
+  UI_3542556795_player_error_no_transfers_to_complete = "Jeg er ikke sikker på, hvor jeg skal lægge noget af dette.",
+
+  UI_3542556795_mod_name = "Hurtig Sortering",
+
+  UI_3542556795_general_settings_header = "Generelle Indstillinger",
+  UI_3542556795_sort_range_name = "Sorteringsområde i Fliser",
+  UI_3542556795_sort_range_tooltip = "Den maksimale afstand (i fliser) for at søge efter beholdere til at sortere genstande i.",
+
+  UI_3542556795_category_based_settings_header = "Kategoribaserede Indstillinger",
+  UI_3542556795_category_based_transfers_name = "Aktivér Kategoribaserede Overførsler",
+  UI_3542556795_category_based_transfers_tooltip = "Aktivér/deaktivér kategoribaserede overførsler, som forsøges, hvis der ikke findes en beholder med præcis samme genstand, men der findes en beholder med flere genstande af samme kategori. <BR> Forsøger ikke at sortere genstande med kategorien 'Genstand' på denne måde, fordi den bruges så bredt, medmindre det er aktiveret nedenfor.",
+
+  UI_3542556795_stack_counts_as_one_name = "Stak Tæller som Én Genstand",
+  UI_3542556795_stack_counts_as_one_tooltip = "Når aktiveret, tæller en stak som en enkelt genstand ved beregning af procentdelen af kategorier i en beholder. <BR> Dette forhindrer, for eksempel, 200 cigaretter fra grundlæggende at garantere, at beholderen betragtes som en 'Mad'-beholder.",
+
+  UI_3542556795_category_transfers_for_item_category_name = "Aktivér Kategoribaserede Overførsler for 'Genstand' Kategori",
+  UI_3542556795_category_transfers_for_item_category_tooltip = "Aktivér/deaktivér kategoribaserede overførsler for genstande med kategorien 'Genstand'.",
+
+  UI_3542556795_ignore_item_category_name = "Ignorer Genstandskategori",
+  UI_3542556795_ignore_item_category_tooltip = "Hvis aktiveret, vil genstande med kategorien 'Genstand' ikke blive talt med ved beregning af procentdelen af genstandskategorier i en beholder.",
+
+  UI_3542556795_category_threshold_settings_header = "Indstillinger for Kategoritærskel",
+  UI_3542556795_category_item_count_threshold_name = "Tærskel for Antal Genstande i Kategori",
+  UI_3542556795_category_item_count_threshold_tooltip = "Det mindste antal genstande, der skal findes i en beholder, for potentielt at blive betragtet som matchende en kategori.",
+
+  UI_3542556795_category_item_percentage_threshold_name = "Tærskel for Procentdel af Genstande i Kategori",
+  UI_3542556795_category_item_percentage_threshold_tooltip = "Den mindste procentdel af genstande i en beholder med mindst category_item_count_threshold genstande, der kræves for at blive betragtet som matchende en kategori.",
+
+  UI_3542556795_food_settings_header = "Madindstillinger",
+  UI_3542556795_special_food_treatment_name = "Særlig Madbehandling",
+  UI_3542556795_special_food_treatment_tooltip = "Aktiverer/deaktiverer særlig behandling for hurtig sortering af madvarer med køleskabe/frysere."
+
+  UI_3542556795_misc_settings_header = "Diverse Indstillinger",
+  UI_3542556795_player_says_errors_name = "Spiller Siger Fejl",
+  UI_3542556795_player_says_errors_tooltip = "Spillerkarakteren siger, når et sted ikke kan findes til en genstand, ingen beholdere findes i nærheden, eller ingen genstande opfylder sorteringskriterier."
+}

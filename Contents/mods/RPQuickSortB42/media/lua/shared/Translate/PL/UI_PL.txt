@@ -1,0 +1,43 @@
+UI_PL = {
+  UI_3542556795_menu_entry_quick_sort = "Szybkie Sortowanie",
+  UI_3542556795_menu_entry_quick_sort_all = "Szybkie Sortowanie Wszystkiego",
+
+  UI_3542556795_player_error_no_containers = "Nie widzę żadnych pojemników w pobliżu.",
+  UI_3542556795_player_error_nothing_to_sort = "Nie chcę sortować tych rzeczy.",
+  UI_3542556795_player_error_nowhere_to_put = "Nie widzę, gdzie to położyć.",
+  UI_3542556795_player_error_no_transfers_to_complete = "Nie jestem pewien, gdzie to wszystko umieścić.",
+
+  UI_3542556795_mod_name = "Szybkie Sortowanie",
+
+  UI_3542556795_general_settings_header = "Ustawienia Ogólne",
+  UI_3542556795_sort_range_name = "Zasięg Sortowania",
+  UI_3542556795_sort_range_tooltip = "Maksymalna odległość (w polach) do przeszukiwania pojemników w celu sortowania przedmiotów.",
+
+  UI_3542556795_category_based_settings_header = "Ustawienia Oparte na Kategoriach",
+  UI_3542556795_category_based_transfers_name = "Włącz Transfery Oparte na Kategoriach",
+  UI_3542556795_category_based_transfers_tooltip = "Włącz/wyłącz transfery oparte na kategoriach, które są próbowane, jeśli nie znaleziono pojemnika z dokładnie tym samym przedmiotem, ale istnieje pojemnik z kilkoma przedmiotami tej samej kategorii. <BR> Nie próbuje sortować przedmiotów z kategorią 'Item' w ten sposób, ponieważ jest ona używana zbyt szeroko, chyba że zostanie włączona poniżej.",
+
+  UI_3542556795_stack_counts_as_one_name = "Stos Liczy się Jako Jeden Przedmiot",
+  UI_3542556795_stack_counts_as_one_tooltip = "Gdy włączone, stos liczy się jako pojedynczy przedmiot przy obliczaniu procentu kategorii w pojemniku. <BR> To zapobiega, na przykład, sytuacji, w której 200 papierosów praktycznie gwarantuje, że pojemnik zostanie uznany za pojemnik z 'Jedzeniem'.",
+
+  UI_3542556795_category_transfers_for_item_category_name = "Włącz Transfery Oparte na Kategoriach dla Kategorii 'Item'",
+  UI_3542556795_category_transfers_for_item_category_tooltip = "Włącz/wyłącz transfery oparte na kategoriach dla przedmiotów z kategorią 'Item'.",
+
+  UI_3542556795_ignore_item_category_name = "Ignoruj Kategorię Item",
+  UI_3542556795_ignore_item_category_tooltip = "Jeśli włączone, nie będzie liczyć przedmiotów z kategorią 'Item' podczas obliczania procentu kategorii przedmiotów obecnych w pojemniku.",
+
+  UI_3542556795_category_threshold_settings_header = "Ustawienia Progów Kategorii",
+  UI_3542556795_category_item_count_threshold_name = "Próg Liczby Przedmiotów Kategorii",
+  UI_3542556795_category_item_count_threshold_tooltip = "Minimalna liczba przedmiotów, które muszą zostać znalezione w pojemniku, aby potencjalnie uznać go za pasujący do kategorii.",
+
+  UI_3542556795_category_item_percentage_threshold_name = "Próg Procentowy Przedmiotów Kategorii",
+  UI_3542556795_category_item_percentage_threshold_tooltip = "Minimalny procent przedmiotów w pojemniku z co najmniej category_item_count_threshold przedmiotami wymagany do uznania za pasujący do kategorii.",
+
+  UI_3542556795_food_settings_header = "Ustawienia Żywności",
+  UI_3542556795_special_food_treatment_name = "Specjalne Traktowanie Żywności",
+  UI_3542556795_special_food_treatment_tooltip = "Włącza/wyłącza specjalne traktowanie dla szybkiego sortowania produktów spożywczych z lodówkami/zamrażarkami."
+
+  UI_3542556795_misc_settings_header = "Różne Ustawienia",
+  UI_3542556795_player_says_errors_name = "Postać Gracza Zgłasza Błędy",
+  UI_3542556795_player_says_errors_tooltip = "Postać gracza mówi, gdy nie można znaleźć miejsca na przedmiot, nie znaleziono pojemników w pobliżu lub żadne przedmioty nie spełniają kryteriów sortowania."
+}

@@ -1,0 +1,43 @@
+UI_IT = {
+  UI_3542556795_menu_entry_quick_sort = "Ordinamento Rapido",
+  UI_3542556795_menu_entry_quick_sort_all = "Ordina Tutto Rapidamente",
+
+  UI_3542556795_player_error_no_containers = "Non vedo nessun contenitore nelle vicinanze.",
+  UI_3542556795_player_error_nothing_to_sort = "Non voglio ordinare nessuno di questi oggetti.",
+  UI_3542556795_player_error_nowhere_to_put = "Non vedo dove mettere questo.",
+  UI_3542556795_player_error_no_transfers_to_complete = "Non sono sicuro dove mettere nessuno di questi oggetti.",
+
+  UI_3542556795_mod_name = "Ordinamento Rapido",
+
+  UI_3542556795_general_settings_header = "Impostazioni Generali",
+  UI_3542556795_sort_range_name = "Raggio di Ordinamento in Caselle",
+  UI_3542556795_sort_range_tooltip = "La distanza massima (in caselle) per cercare contenitori in cui ordinare gli oggetti.",
+
+  UI_3542556795_category_based_settings_header = "Impostazioni Basate su Categorie",
+  UI_3542556795_category_based_transfers_name = "Abilita Trasferimenti Basati su Categorie",
+  UI_3542556795_category_based_transfers_tooltip = "Abilita/disabilita i trasferimenti basati su categorie che vengono tentati se non viene trovato nessun contenitore con lo stesso oggetto, ma c'è un contenitore trovato con diversi oggetti della stessa categoria. <BR> Non tenta di ordinare oggetti con la categoria 'Oggetto' in questo modo perché è usata in modo troppo ampio, a meno che non sia abilitata di seguito.",
+
+  UI_3542556795_stack_counts_as_one_name = "La Pila Conta Come Un Oggetto",
+  UI_3542556795_stack_counts_as_one_tooltip = "Quando abilitato, una pila conta come un singolo oggetto nel calcolare la percentuale di categorie in un contenitore. <BR> Questo impedisce, per esempio, a 200 sigarette di praticamente garantire che il contenitore sia considerato un contenitore di 'Cibo'.",
+
+  UI_3542556795_category_transfers_for_item_category_name = "Abilita Trasferimenti Basati su Categorie per la Categoria 'Oggetto'",
+  UI_3542556795_category_transfers_for_item_category_tooltip = "Abilita/disabilita i trasferimenti basati su categorie per gli oggetti con categoria 'Oggetto'.",
+
+  UI_3542556795_ignore_item_category_name = "Ignora Categoria Oggetto",
+  UI_3542556795_ignore_item_category_tooltip = "Se abilitato, non conterà gli oggetti con categoria 'Oggetto' nel calcolare la percentuale di categorie di oggetti presenti in un contenitore.",
+
+  UI_3542556795_category_threshold_settings_header = "Impostazioni Soglia Categoria",
+  UI_3542556795_category_item_count_threshold_name = "Soglia Numero Oggetti per Categoria",
+  UI_3542556795_category_item_count_threshold_tooltip = "Il numero minimo di oggetti che devono essere trovati in un contenitore per essere potenzialmente considerato come corrispondente a una categoria.",
+
+  UI_3542556795_category_item_percentage_threshold_name = "Soglia Percentuale Oggetti per Categoria",
+  UI_3542556795_category_item_percentage_threshold_tooltip = "La percentuale minima di oggetti in un contenitore con almeno category_item_count_threshold oggetti richiesti per essere considerato corrispondente a una categoria.",
+
+  UI_3542556795_food_settings_header = "Impostazioni Cibo",
+  UI_3542556795_special_food_treatment_name = "Trattamento Speciale Cibo",
+  UI_3542556795_special_food_treatment_tooltip = "Abilita/disabilita il trattamento speciale per l'ordinamento rapido di oggetti alimentari con frigoriferi/congelatori."
+
+  UI_3542556795_misc_settings_header = "Impostazioni Varie",
+  UI_3542556795_player_says_errors_name = "Il Giocatore Dice Errori",
+  UI_3542556795_player_says_errors_tooltip = "Il personaggio del giocatore dice quando non può essere trovato un posto per un oggetto, non ci sono contenitori nelle vicinanze, o nessun oggetto soddisfa i criteri di ordinamento."
+}

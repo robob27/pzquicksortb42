@@ -1,0 +1,43 @@
+UI_NO = {
+  UI_3542556795_menu_entry_quick_sort = "Hurtigsortering",
+  UI_3542556795_menu_entry_quick_sort_all = "Hurtigsorter Alt",
+
+  UI_3542556795_player_error_no_containers = "Jeg ser ingen beholdere i nærheten.",
+  UI_3542556795_player_error_nothing_to_sort = "Jeg vil ikke sortere noe av dette.",
+  UI_3542556795_player_error_nowhere_to_put = "Jeg ser ingen steder å legge dette.",
+  UI_3542556795_player_error_no_transfers_to_complete = "Jeg er ikke sikker på hvor jeg skal plassere dette.",
+
+  UI_3542556795_mod_name = "Hurtigsortering",
+
+  UI_3542556795_general_settings_header = "Generelle Innstillinger",
+  UI_3542556795_sort_range_name = "Sorteringsrekkevidde i Fliser",
+  UI_3542556795_sort_range_tooltip = "Maksimal avstand (i fliser) for å søke etter beholdere å sortere gjenstander i.",
+
+  UI_3542556795_category_based_settings_header = "Kategoribaserte Innstillinger",
+  UI_3542556795_category_based_transfers_name = "Aktiver Kategoribaserte Overføringer",
+  UI_3542556795_category_based_transfers_tooltip = "Aktiver/deaktiver kategoribaserte overføringer som forsøkes hvis ingen beholder blir funnet med nøyaktig samme gjenstand, men det finnes en beholder med flere gjenstander av samme kategori. <BR> Forsøker ikke å sortere gjenstander med kategorien 'Item' på denne måten fordi den brukes så bredt, med mindre det aktiveres nedenfor.",
+
+  UI_3542556795_stack_counts_as_one_name = "Stabel Teller som Én Gjenstand",
+  UI_3542556795_stack_counts_as_one_tooltip = "Når aktivert, teller en stabel som en enkelt gjenstand ved beregning av prosentandel kategorier i en beholder. <BR> Dette forhindrer, for eksempel, at 200 sigaretter i praksis garanterer at beholderen betraktes som en 'Mat' beholder.",
+
+  UI_3542556795_category_transfers_for_item_category_name = "Aktiver Kategoribaserte Overføringer for 'Item' Kategori",
+  UI_3542556795_category_transfers_for_item_category_tooltip = "Aktiver/deaktiver kategoribaserte overføringer for gjenstander med kategorien 'Item'.",
+
+  UI_3542556795_ignore_item_category_name = "Ignorer Item Kategori",
+  UI_3542556795_ignore_item_category_tooltip = "Hvis aktivert, vil ikke gjenstander med kategorien 'Item' telles når prosentandelen av gjenstandskategorier i en beholder beregnes.",
+
+  UI_3542556795_category_threshold_settings_header = "Kategori Terskelinnstillinger",
+  UI_3542556795_category_item_count_threshold_name = "Terskel for Antall Gjenstander i Kategori",
+  UI_3542556795_category_item_count_threshold_tooltip = "Minimum antall gjenstander som må finnes i en beholder for potensielt å bli vurdert som passende til en kategori.",
+
+  UI_3542556795_category_item_percentage_threshold_name = "Terskel for Prosentandel Gjenstander i Kategori",
+  UI_3542556795_category_item_percentage_threshold_tooltip = "Minimum prosentandel av gjenstander i en beholder med minst category_item_count_threshold gjenstander som kreves for å bli vurdert som passende til en kategori.",
+
+  UI_3542556795_food_settings_header = "Mat Innstillinger",
+  UI_3542556795_special_food_treatment_name = "Spesialbehandling av Mat",
+  UI_3542556795_special_food_treatment_tooltip = "Aktiverer/deaktiverer spesialbehandling for hurtigsortering av matgjenstander med kjøleskap/frysere."
+
+  UI_3542556795_misc_settings_header = "Diverse Innstillinger",
+  UI_3542556795_player_says_errors_name = "Spilleren Sier Feil",
+  UI_3542556795_player_says_errors_tooltip = "Spillerkarakteren sier ifra når det ikke kan finnes et sted for en gjenstand, ingen beholdere finnes i nærheten, eller ingen gjenstander oppfyller sorteringskriteriene."
+}

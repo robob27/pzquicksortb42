@@ -1,0 +1,43 @@
+UI_NL = {
+  UI_3542556795_menu_entry_quick_sort = "Snel Sorteren",
+  UI_3542556795_menu_entry_quick_sort_all = "Alles Snel Sorteren",
+
+  UI_3542556795_player_error_no_containers = "Ik zie geen containers in de buurt.",
+  UI_3542556795_player_error_nothing_to_sort = "Ik wil geen van deze spullen sorteren.",
+  UI_3542556795_player_error_nowhere_to_put = "Ik zie nergens om dit neer te zetten.",
+  UI_3542556795_player_error_no_transfers_to_complete = "Ik weet niet waar ik dit moet plaatsen.",
+
+  UI_3542556795_mod_name = "Snel Sorteren",
+
+  UI_3542556795_general_settings_header = "Algemene Instellingen",
+  UI_3542556795_sort_range_name = "Sorteerbereik Tegels",
+  UI_3542556795_sort_range_tooltip = "De maximale afstand (in tegels) om te zoeken naar containers om items in te sorteren.",
+
+  UI_3542556795_category_based_settings_header = "Categorie Gebaseerde Instellingen",
+  UI_3542556795_category_based_transfers_name = "Categorie Gebaseerde Verplaatsingen Inschakelen",
+  UI_3542556795_category_based_transfers_tooltip = "Schakel categorie gebaseerde verplaatsingen in/uit die worden geprobeerd als er geen container met precies hetzelfde item wordt gevonden, maar er wel een container is met meerdere items van dezelfde categorie. <BR> Probeert items met categorie 'Item' niet op deze manier te sorteren omdat deze zo breed wordt gebruikt, tenzij hieronder ingeschakeld.",
+
+  UI_3542556795_stack_counts_as_one_name = "Stapel Telt als Eén Item",
+  UI_3542556795_stack_counts_as_one_tooltip = "Indien ingeschakeld telt een stapel als één enkel item bij het berekenen van het percentage van categorieën in een container. <BR> Dit voorkomt bijvoorbeeld dat 200 sigaretten praktisch garanderen dat de container wordt beschouwd als een 'Voedsel' container.",
+
+  UI_3542556795_category_transfers_for_item_category_name = "Categorie Gebaseerde Verplaatsingen voor 'Item' Categorie Inschakelen",
+  UI_3542556795_category_transfers_for_item_category_tooltip = "Schakel categorie gebaseerde verplaatsingen in/uit voor items met categorie 'Item'.",
+
+  UI_3542556795_ignore_item_category_name = "Negeer Item Categorie",
+  UI_3542556795_ignore_item_category_tooltip = "Indien ingeschakeld, worden items met categorie 'Item' niet meegeteld bij het berekenen van het percentage aanwezige itemcategorieën in een container.",
+
+  UI_3542556795_category_threshold_settings_header = "Categorie Drempelwaarde Instellingen",
+  UI_3542556795_category_item_count_threshold_name = "Categorie Item Aantal Drempelwaarde",
+  UI_3542556795_category_item_count_threshold_tooltip = "Het minimale aantal items dat in een container moet worden gevonden om mogelijk te worden beschouwd als passend bij een categorie.",
+
+  UI_3542556795_category_item_percentage_threshold_name = "Categorie Item Percentage Drempelwaarde",
+  UI_3542556795_category_item_percentage_threshold_tooltip = "Het minimale percentage items in een container met tenminste category_item_count_threshold items dat vereist is om te worden beschouwd als passend bij een categorie.",
+
+  UI_3542556795_food_settings_header = "Voedsel Instellingen",
+  UI_3542556795_special_food_treatment_name = "Speciale Voedsel Behandeling",
+  UI_3542556795_special_food_treatment_tooltip = "Schakelt speciale behandeling in/uit voor het snel sorteren van voedselitems met koelkasten/vriezers."
+
+  UI_3542556795_misc_settings_header = "Overige Instellingen",
+  UI_3542556795_player_says_errors_name = "Speler Vermeldt Fouten",
+  UI_3542556795_player_says_errors_tooltip = "Spelerkarakter zegt wanneer er geen plek gevonden kan worden voor een item, geen containers in de buurt gevonden worden, of geen items aan de sorteercriteria voldoen."
+}

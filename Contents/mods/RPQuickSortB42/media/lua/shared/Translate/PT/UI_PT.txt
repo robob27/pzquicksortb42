@@ -1,0 +1,43 @@
+UI_PT = {
+  UI_3542556795_menu_entry_quick_sort = "Ordenação Rápida",
+  UI_3542556795_menu_entry_quick_sort_all = "Ordenar Tudo Rapidamente",
+
+  UI_3542556795_player_error_no_containers = "Não vejo nenhum recipiente por perto.",
+  UI_3542556795_player_error_nothing_to_sort = "Não quero organizar nenhuma destas coisas.",
+  UI_3542556795_player_error_nowhere_to_put = "Não vejo onde colocar isto.",
+  UI_3542556795_player_error_no_transfers_to_complete = "Não tenho a certeza onde colocar isto.",
+
+  UI_3542556795_mod_name = "Ordenação Rápida",
+
+  UI_3542556795_general_settings_header = "Configurações Gerais",
+  UI_3542556795_sort_range_name = "Alcance de Ordenação em Mosaicos",
+  UI_3542556795_sort_range_tooltip = "A distância máxima (em mosaicos) para procurar recipientes onde ordenar os itens.",
+
+  UI_3542556795_category_based_settings_header = "Configurações Baseadas em Categorias",
+  UI_3542556795_category_based_transfers_name = "Ativar Transferências Baseadas em Categorias",
+  UI_3542556795_category_based_transfers_tooltip = "Ativa/desativa transferências baseadas em categorias que são tentadas se nenhum recipiente for encontrado com o mesmo item exato, mas existe um recipiente com vários itens da mesma categoria. <BR> Não tenta ordenar itens com categoria 'Item' desta forma porque é usada de forma muito ampla, a menos que seja ativado abaixo.",
+
+  UI_3542556795_stack_counts_as_one_name = "Pilha Conta Como Um Item",
+  UI_3542556795_stack_counts_as_one_tooltip = "Quando ativado, uma pilha conta como um único item ao calcular a percentagem de categorias num recipiente. <BR> Isto evita, por exemplo, que 200 cigarros praticamente garantam que o recipiente seja considerado um recipiente de 'Comida'.",
+
+  UI_3542556795_category_transfers_for_item_category_name = "Ativar Transferências Baseadas em Categorias para a Categoria 'Item'",
+  UI_3542556795_category_transfers_for_item_category_tooltip = "Ativa/desativa transferências baseadas em categorias para itens com categoria 'Item'.",
+
+  UI_3542556795_ignore_item_category_name = "Ignorar Categoria de Item",
+  UI_3542556795_ignore_item_category_tooltip = "Se ativado, não contará itens com categoria 'Item' ao calcular a percentagem de categorias de itens presentes num recipiente.",
+
+  UI_3542556795_category_threshold_settings_header = "Configurações de Limiar de Categoria",
+  UI_3542556795_category_item_count_threshold_name = "Limiar de Contagem de Itens de Categoria",
+  UI_3542556795_category_item_count_threshold_tooltip = "O número mínimo de itens que precisam ser encontrados num recipiente para ser potencialmente considerado como correspondente a uma categoria.",
+
+  UI_3542556795_category_item_percentage_threshold_name = "Limiar de Percentagem de Itens de Categoria",
+  UI_3542556795_category_item_percentage_threshold_tooltip = "A percentagem mínima de itens num recipiente com pelo menos category_item_count_threshold itens necessários para ser considerado como correspondente a uma categoria.",
+
+  UI_3542556795_food_settings_header = "Configurações de Comida",
+  UI_3542556795_special_food_treatment_name = "Tratamento Especial de Comida",
+  UI_3542556795_special_food_treatment_tooltip = "Ativa/desativa o tratamento especial para ordenação rápida de alimentos com frigoríficos/congeladores."
+
+  UI_3542556795_misc_settings_header = "Configurações Diversas",
+  UI_3542556795_player_says_errors_name = "Jogador Comunica Erros",
+  UI_3542556795_player_says_errors_tooltip = "A personagem do jogador diz quando não consegue encontrar um local para um item, quando não encontra recipientes nas proximidades, ou quando nenhum item cumpre os critérios de ordenação."
+}

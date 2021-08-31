@@ -1,0 +1,43 @@
+UI_FI = {
+  UI_3542556795_menu_entry_quick_sort = "Pikalajittelu",
+  UI_3542556795_menu_entry_quick_sort_all = "Pikalajittele kaikki",
+
+  UI_3542556795_player_error_no_containers = "En näe säiliöitä lähistöllä.",
+  UI_3542556795_player_error_nothing_to_sort = "En halua lajitella mitään tästä tavarasta.",
+  UI_3542556795_player_error_nowhere_to_put = "En näe paikkaa mihin laittaa tämä.",
+  UI_3542556795_player_error_no_transfers_to_complete = "En ole varma mihin laittaisin mitään tästä.",
+
+  UI_3542556795_mod_name = "Pikalajittelu",
+
+  UI_3542556795_general_settings_header = "Yleiset asetukset",
+  UI_3542556795_sort_range_name = "Lajittelualue ruuduissa",
+  UI_3542556795_sort_range_tooltip = "Maksimietäisyys (ruuduissa) etsiä säiliöitä, joihin lajitella esineitä.",
+
+  UI_3542556795_category_based_settings_header = "Kategoriaperusteisten asetusten asetukset",
+  UI_3542556795_category_based_transfers_name = "Ota käyttöön kategoriaperusteinen siirto",
+  UI_3542556795_category_based_transfers_tooltip = "Ota käyttöön/pois käytöstä kategoriaperusteinen siirto, jota yritetään jos täsmälleen samaa esinettä sisältävää säiliötä ei löydy, mutta löytyy säiliö jossa on useita esineitä samasta kategoriasta. <BR> Ei yritä lajitella 'Esine' -kategorian esineitä tällä tavalla koska kategoriaa käytetään niin laajasti, ellei sitä ole erikseen alla otettu käyttöön.",
+
+  UI_3542556795_stack_counts_as_one_name = "Pino lasketaan yhtenä esineenä",
+  UI_3542556795_stack_counts_as_one_tooltip = "Kun käytössä, pino lasketaan yhtenä esineenä laskettaessa kategorioiden prosenttiosuuksia säiliössä. <BR> Tämä estää esimerkiksi 200 savukkeen käytännössä takaamasta, että säiliö katsotaan 'Ruoka' -säiliöksi.",
+
+  UI_3542556795_category_transfers_for_item_category_name = "Ota käyttöön kategoriaperusteinen siirto 'Esine' -kategorialle",
+  UI_3542556795_category_transfers_for_item_category_tooltip = "Ota käyttöön/pois käytöstä kategoriaperusteinen siirto esineille joilla on kategoria 'Esine'.",
+
+  UI_3542556795_ignore_item_category_name = "Jätä huomiotta Esine-kategoria",
+  UI_3542556795_ignore_item_category_tooltip = "Jos käytössä, ei laske 'Esine' -kategorian esineitä laskettaessa säiliössä olevien esinekategorioiden prosenttiosuuksia.",
+
+  UI_3542556795_category_threshold_settings_header = "Kategorian kynnysarvoasetukset",
+  UI_3542556795_category_item_count_threshold_name = "Kategoriaesineiden määrän kynnysarvo",
+  UI_3542556795_category_item_count_threshold_tooltip = "Vähimmäismäärä esineitä, jotka täytyy löytyä säiliöstä jotta sitä voidaan mahdollisesti pitää kategoriaan sopivana.",
+
+  UI_3542556795_category_item_percentage_threshold_name = "Kategoriaesineiden prosenttiosuuden kynnysarvo",
+  UI_3542556795_category_item_percentage_threshold_tooltip = "Vähimmäisprosenttiosuus esineistä säiliössä, jossa on vähintään category_item_count_threshold esinettä, jotta sitä pidetään kategoriaan sopivana.",
+
+  UI_3542556795_food_settings_header = "Ruoka-asetukset",
+  UI_3542556795_special_food_treatment_name = "Ruoan erikoiskäsittely",
+  UI_3542556795_special_food_treatment_tooltip = "Ottaa käyttöön/pois käytöstä ruokatuotteiden erikoiskäsittelyn pikalajittelussa jääkaappien/pakastimien kanssa."
+
+  UI_3542556795_misc_settings_header = "Sekalaiset asetukset",
+  UI_3542556795_player_says_errors_name = "Pelaaja ilmoittaa virheistä",
+  UI_3542556795_player_says_errors_tooltip = "Pelaajahahmo sanoo ääneen, kun esineelle ei löydy paikkaa, lähellä ei ole säiliöitä, tai mikään esine ei täytä lajittelukriteerejä."
+}

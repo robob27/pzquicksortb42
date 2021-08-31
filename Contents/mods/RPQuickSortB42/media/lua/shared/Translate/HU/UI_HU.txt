@@ -1,0 +1,43 @@
+UI_HU = {
+  UI_3542556795_menu_entry_quick_sort = "Gyors rendezés",
+  UI_3542556795_menu_entry_quick_sort_all = "Összes gyors rendezése",
+
+  UI_3542556795_player_error_no_containers = "Nem látok tárolókat a közelben.",
+  UI_3542556795_player_error_nothing_to_sort = "Nem akarom rendezni ezeket a dolgokat.",
+  UI_3542556795_player_error_nowhere_to_put = "Nem látok helyet, ahova ezt tehetném.",
+  UI_3542556795_player_error_no_transfers_to_complete = "Nem tudom, hova tegyek bármit is ezek közül.",
+
+  UI_3542556795_mod_name = "Gyors rendezés",
+
+  UI_3542556795_general_settings_header = "Általános beállítások",
+  UI_3542556795_sort_range_name = "Rendezési tartomány mezőkben",
+  UI_3542556795_sort_range_tooltip = "A maximális távolság (mezőkben), amelyen belül tárolókat keres a tárgyak rendezéséhez.",
+
+  UI_3542556795_category_based_settings_header = "Kategória alapú beállítások",
+  UI_3542556795_category_based_transfers_name = "Kategória alapú áthelyezések engedélyezése",
+  UI_3542556795_category_based_transfers_tooltip = "Engedélyezi/letiltja a kategória alapú áthelyezéseket, amelyek akkor kerülnek alkalmazásra, ha nem található tároló ugyanazzal a konkrét tárggyal, de van olyan tároló, amelyben több azonos kategóriájú tárgy van. <BR> Nem próbálja meg az 'Tárgy' kategóriájú elemeket ilyen módon rendezni, mivel ez túl széles körben használt, kivéve ha az alábbiak szerint engedélyezve van.",
+
+  UI_3542556795_stack_counts_as_one_name = "A halmaz egy tárgynak számít",
+  UI_3542556795_stack_counts_as_one_tooltip = "Ha engedélyezve van, egy halmaz egyetlen tárgyként számít a tárolóban lévő kategóriák százalékos arányának kiszámításakor. <BR> Ez megakadályozza például, hogy 200 cigaretta gyakorlatilag garantálja, hogy a tárolót 'Élelmiszer' tárolónak tekintsék.",
+
+  UI_3542556795_category_transfers_for_item_category_name = "Kategória alapú áthelyezések engedélyezése a 'Tárgy' kategóriánál",
+  UI_3542556795_category_transfers_for_item_category_tooltip = "Engedélyezi/letiltja a kategória alapú áthelyezéseket a 'Tárgy' kategóriájú elemekhez.",
+
+  UI_3542556795_ignore_item_category_name = "Tárgy kategória figyelmen kívül hagyása",
+  UI_3542556795_ignore_item_category_tooltip = "Ha engedélyezve van, nem számolja a 'Tárgy' kategóriájú elemeket a tárolóban lévő tárgykategóriák százalékos arányának kiszámításakor.",
+
+  UI_3542556795_category_threshold_settings_header = "Kategória küszöbérték beállítások",
+  UI_3542556795_category_item_count_threshold_name = "Kategória tárgyak számának küszöbértéke",
+  UI_3542556795_category_item_count_threshold_tooltip = "A tárgyak minimális száma, amelyeket egy tárolóban meg kell találni ahhoz, hogy potenciálisan egy kategóriához illeszkedőnek tekintsük.",
+
+  UI_3542556795_category_item_percentage_threshold_name = "Kategória tárgyak százalékos küszöbértéke",
+  UI_3542556795_category_item_percentage_threshold_tooltip = "A tárgyak minimális százalékos aránya egy tárolóban, legalább category_item_count_threshold tárggyal, amely szükséges ahhoz, hogy egy kategóriához illeszkedőnek tekintsük.",
+
+  UI_3542556795_food_settings_header = "Élelmiszer beállítások",
+  UI_3542556795_special_food_treatment_name = "Különleges élelmiszer kezelés",
+  UI_3542556795_special_food_treatment_tooltip = "Engedélyezi/letiltja az élelmiszerek különleges kezelését hűtőszekrényekkel/fagyasztókkal való gyors rendezéskor."
+
+  UI_3542556795_misc_settings_header = "Egyéb beállítások",
+  UI_3542556795_player_says_errors_name = "A játékos kimondja a hibákat",
+  UI_3542556795_player_says_errors_tooltip = "A játékos karaktere kimondja, ha nem találja a tárgy helyét, nem talál tárolókat a közelben, vagy egy tárgy sem felel meg a rendezési feltételeknek."
+}

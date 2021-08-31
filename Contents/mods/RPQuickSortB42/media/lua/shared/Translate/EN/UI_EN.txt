@@ -1,0 +1,43 @@
+UI_EN = {
+  UI_3542556795_menu_entry_quick_sort = "Quick Sort",
+  UI_3542556795_menu_entry_quick_sort_all = "Quick Sort All",
+
+  UI_3542556795_player_error_no_containers = "I don't see any containers around.",
+  UI_3542556795_player_error_nothing_to_sort = "I don't want to sort any of this stuff.",
+  UI_3542556795_player_error_nowhere_to_put = "I don't see anywhere to put this.",
+  UI_3542556795_player_error_no_transfers_to_complete = "I'm not sure where to put any of this.",
+
+  UI_3542556795_mod_name = "Quick Sort",
+
+  UI_3542556795_general_settings_header = "General Settings",
+  UI_3542556795_sort_range_name = "Sort Range Tiles",
+  UI_3542556795_sort_range_tooltip = "The maximum distance (in tiles) to search for containers to sort items into.",
+
+  UI_3542556795_category_based_settings_header = "Category Based Settings",
+  UI_3542556795_category_based_transfers_name = "Enable Category Based Transfers",
+  UI_3542556795_category_based_transfers_tooltip = "Enable/disable category based transfers which are attempted if no container is found with the same exact item, but there is a container found with several items of same category. <BR> Does not attempt to sort items with category 'Item' in this way because it is used so broadly, unless enabled below.",
+
+  UI_3542556795_stack_counts_as_one_name = "Stack Counts as One Item",
+  UI_3542556795_stack_counts_as_one_tooltip = "When enabled, a stack counts as a single item when calculating percentage of categories in a container. <BR> This prevents, for example, 200 cigarettes from basically guaranteeing that the container is considered a 'Food' container.",
+
+  UI_3542556795_category_transfers_for_item_category_name = "Enable Category Based Transfers for 'Item' Category",
+  UI_3542556795_category_transfers_for_item_category_tooltip = "Enable/disable category based transfers for items with category 'Item'.",
+
+  UI_3542556795_ignore_item_category_name = "Ignore Item Category",
+  UI_3542556795_ignore_item_category_tooltip = "If enabled, will not count items with category 'Item' when calculating percentage of item categories present in a container.",
+
+  UI_3542556795_category_threshold_settings_header = "Category Threshold Settings",
+  UI_3542556795_category_item_count_threshold_name = "Category Item Count Threshold",
+  UI_3542556795_category_item_count_threshold_tooltip = "The minimum number of items that need to be found in a container to be potentially considered as matching a category.",
+
+  UI_3542556795_category_item_percentage_threshold_name = "Category Item Percentage Threshold",
+  UI_3542556795_category_item_percentage_threshold_tooltip = "The minimum percentage of items in a container with at least category_item_count_threshold items required to be considered as matching a category.",
+
+  UI_3542556795_food_settings_header = "Food Settings",
+  UI_3542556795_special_food_treatment_name = "Special Food Treatment",
+  UI_3542556795_special_food_treatment_tooltip = "Enables/disables special treatment for quick sorting food items with fridges/freezers."
+
+  UI_3542556795_misc_settings_header = "Miscellaneous Settings",
+  UI_3542556795_player_says_errors_name = "Player Says Errors",
+  UI_3542556795_player_says_errors_tooltip = "Player character says when a spot can't be found for an item, no containers are found nearby, or no items meet sorting criteria."
+}

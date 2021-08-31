@@ -1,0 +1,43 @@
+UI_TR = {
+  UI_3542556795_menu_entry_quick_sort = "Hızlı Sıralama",
+  UI_3542556795_menu_entry_quick_sort_all = "Tümünü Hızlı Sırala",
+
+  UI_3542556795_player_error_no_containers = "Etrafta hiç konteyner görmüyorum.",
+  UI_3542556795_player_error_nothing_to_sort = "Bu şeylerin hiçbirini sıralamak istemiyorum.",
+  UI_3542556795_player_error_nowhere_to_put = "Bunu koyacak bir yer göremiyorum.",
+  UI_3542556795_player_error_no_transfers_to_complete = "Bunların hiçbirini nereye koyacağımdan emin değilim.",
+
+  UI_3542556795_mod_name = "Hızlı Sıralama",
+
+  UI_3542556795_general_settings_header = "Genel Ayarlar",
+  UI_3542556795_sort_range_name = "Sıralama Menzil Karoları",
+  UI_3542556795_sort_range_tooltip = "Eşyaları sıralamak için konteyner aramak için maksimum mesafe (karo cinsinden).",
+
+  UI_3542556795_category_based_settings_header = "Kategori Tabanlı Ayarlar",
+  UI_3542556795_category_based_transfers_name = "Kategori Tabanlı Transferleri Etkinleştir",
+  UI_3542556795_category_based_transfers_tooltip = "Aynı eşya ile hiçbir konteyner bulunamadığında, ancak aynı kategoriden birkaç eşya içeren bir konteyner bulunduğunda denenen kategori tabanlı transferleri etkinleştirir/devre dışı bırakır. <BR> 'Item' kategorisindeki eşyaları, aşağıda etkinleştirilmedikçe çok geniş bir şekilde kullanıldığı için bu şekilde sıralamaya çalışmaz.",
+
+  UI_3542556795_stack_counts_as_one_name = "Yığın Tek Eşya Olarak Sayılır",
+  UI_3542556795_stack_counts_as_one_tooltip = "Etkinleştirildiğinde, bir konteynerdeki kategorilerin yüzdesini hesaplarken bir yığın tek bir eşya olarak sayılır. <BR> Bu, örneğin, 200 sigaranın konteynerin 'Yiyecek' konteyneri olarak kabul edilmesini temel olarak garanti etmesini önler.",
+
+  UI_3542556795_category_transfers_for_item_category_name = "'Item' Kategorisi için Kategori Tabanlı Transferleri Etkinleştir",
+  UI_3542556795_category_transfers_for_item_category_tooltip = "'Item' kategorisindeki eşyalar için kategori tabanlı transferleri etkinleştirir/devre dışı bırakır.",
+
+  UI_3542556795_ignore_item_category_name = "Item Kategorisini Yoksay",
+  UI_3542556795_ignore_item_category_tooltip = "Etkinleştirilirse, bir konteynerdeki eşya kategorilerinin yüzdesini hesaplarken 'Item' kategorisine sahip eşyaları saymaz.",
+
+  UI_3542556795_category_threshold_settings_header = "Kategori Eşik Ayarları",
+  UI_3542556795_category_item_count_threshold_name = "Kategori Eşya Sayısı Eşiği",
+  UI_3542556795_category_item_count_threshold_tooltip = "Bir kategoriye uygun olarak kabul edilmesi için bir konteynerde bulunması gereken minimum eşya sayısı.",
+
+  UI_3542556795_category_item_percentage_threshold_name = "Kategori Eşya Yüzdesi Eşiği",
+  UI_3542556795_category_item_percentage_threshold_tooltip = "Bir kategoriye uygun olarak kabul edilmesi için bir konteynerde en az category_item_count_threshold eşyaya sahip olan eşyaların minimum yüzdesi.",
+
+  UI_3542556795_food_settings_header = "Yiyecek Ayarları",
+  UI_3542556795_special_food_treatment_name = "Özel Yiyecek İşleme",
+  UI_3542556795_special_food_treatment_tooltip = "Buzdolapları/dondurucularla yiyecek öğelerini hızlı sıralamak için özel işlemi etkinleştirir/devre dışı bırakır."
+
+  UI_3542556795_misc_settings_header = "Çeşitli Ayarlar",
+  UI_3542556795_player_says_errors_name = "Oyuncu Hataları Söyler",
+  UI_3542556795_player_says_errors_tooltip = "Oyuncu karakteri, bir eşya için yer bulunamadığında, yakında hiçbir konteyner bulunamadığında veya hiçbir eşya sıralama kriterlerini karşılamadığında konuşur."
+}

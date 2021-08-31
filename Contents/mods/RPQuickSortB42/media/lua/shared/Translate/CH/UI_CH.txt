@@ -1,0 +1,43 @@
+UI_CH = {
+  UI_3542556795_menu_entry_quick_sort = "快速排序",
+  UI_3542556795_menu_entry_quick_sort_all = "全部快速排序",
+
+  UI_3542556795_player_error_no_containers = "我看不到周圍有任何容器。",
+  UI_3542556795_player_error_nothing_to_sort = "我不想對這些東西進行排序。",
+  UI_3542556795_player_error_nowhere_to_put = "我找不到可以放置這個的地方。",
+  UI_3542556795_player_error_no_transfers_to_complete = "我不確定該把這些東西放在哪裡。",
+
+  UI_3542556795_mod_name = "快速排序",
+
+  UI_3542556795_general_settings_header = "一般設定",
+  UI_3542556795_sort_range_name = "排序範圍格數",
+  UI_3542556795_sort_range_tooltip = "搜尋可排序物品容器的最大距離（以格數計算）。",
+
+  UI_3542556795_category_based_settings_header = "類別為基礎的設定",
+  UI_3542556795_category_based_transfers_name = "啟用類別為基礎的物品轉移",
+  UI_3542556795_category_based_transfers_tooltip = "啟用/禁用類別為基礎的物品轉移，當找不到含有相同物品的容器，但找到一個包含多個同類別物品的容器時，將嘗試這種轉移。<BR>除非在下方啟用，否則不會嘗試以這種方式對類別為「物品」的物品進行排序，因為這個類別使用範圍過廣。",
+
+  UI_3542556795_stack_counts_as_one_name = "堆疊計算為一個物品",
+  UI_3542556795_stack_counts_as_one_tooltip = "啟用後，在計算容器內類別百分比時，一個堆疊會被視為一個物品。<BR>這可以防止，例如，200支香煙基本上確保容器被視為「食物」容器。",
+
+  UI_3542556795_category_transfers_for_item_category_name = "為「物品」類別啟用類別為基礎的轉移",
+  UI_3542556795_category_transfers_for_item_category_tooltip = "啟用/禁用類別為「物品」的物品進行類別為基礎的轉移。",
+
+  UI_3542556795_ignore_item_category_name = "忽略物品類別",
+  UI_3542556795_ignore_item_category_tooltip = "如果啟用，在計算容器中存在的物品類別百分比時，將不會計算類別為「物品」的物品。",
+
+  UI_3542556795_category_threshold_settings_header = "類別閾值設定",
+  UI_3542556795_category_item_count_threshold_name = "類別物品數量閾值",
+  UI_3542556795_category_item_count_threshold_tooltip = "容器中需要找到的最小物品數量，才可能被視為符合某個類別。",
+
+  UI_3542556795_category_item_percentage_threshold_name = "類別物品百分比閾值",
+  UI_3542556795_category_item_percentage_threshold_tooltip = "容器中至少具有類別物品數量閾值的物品所需的最低百分比，才能被視為符合某個類別。",
+
+  UI_3542556795_food_settings_header = "食物設定",
+  UI_3542556795_special_food_treatment_name = "特殊食物處理",
+  UI_3542556795_special_food_treatment_tooltip = "啟用/禁用對冰箱/冷凍箱中的食物項目進行快速排序的特殊處理。"
+
+  UI_3542556795_misc_settings_header = "其他設定",
+  UI_3542556795_player_says_errors_name = "玩家說出錯誤",
+  UI_3542556795_player_says_errors_tooltip = "當找不到放置物品的位置、附近找不到容器或沒有物品符合排序條件時，玩家角色會說出錯誤訊息。"
+}
