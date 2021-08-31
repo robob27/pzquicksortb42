@@ -1,0 +1,32 @@
+{
+    "Lua.diagnostics.globals": [
+      "ISTimedActionQueue",
+      "getSpecificPlayer",
+      "instanceof",
+      "getWorld",
+      "AdjacentFreeTileFinder",
+      "ISWalkToTimedAction",
+      "ISInventoryTransferAction",
+      "self",
+      "Events",
+      "luautils",
+      "isServer",
+      "isClient",
+      "ISTextEntryBox",
+      "ISUIElement",
+      "UITransition",
+      "UIFont",
+      "ISScrollingListBox",
+      "ISPanelJoypad",
+      "getTextManager",
+      "ISPanel",
+      "ISButton",
+      "getPlayerScreenTop",
+      "getPlayerScreenHeight",
+      "getPlayerScreenLeft",
+      "getPlayerScreenWidth"
+    ],
+    "Lua.diagnostics.disable": [
+      "undefined-field"
+    ]
+}
