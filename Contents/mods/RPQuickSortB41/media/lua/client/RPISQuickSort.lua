@@ -44,9 +44,7 @@ RPISQuickSort.createInventoryMenu = function(playerIndex, context, items)
         else
             local inventoryContainers = RPISQuickSort.convertArrayList(playerInventory:getItemsFromCategory('Container'));
 
-            for __, v in ipairs(inventoryContainers) do
-                local inventoryContainer = v;
-
+            for __, inventoryContainer in ipairs(inventoryContainers) do
                 if inventoryContainer:getInventory():contains(entry2) then
                     isInPlayerInventory = true;
                     break;
