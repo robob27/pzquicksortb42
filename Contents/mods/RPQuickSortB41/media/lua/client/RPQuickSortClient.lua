@@ -441,6 +441,9 @@ RPQuickSort.createTransfers = function(player, transferData, containerReports, q
             local sortedEligibleContainers = table.sort(eligibleContainers, function(a,b) return a['distanceToContainer'] < b['distanceToContainer'] end);
             local closestContainerWithRoom = sortedEligibleContainers[1];
 
+            -- update the contentsWeight on the containerReport in case it runs out of room before the next transfer
+            closestContainerWithRoom['contentsWeight'] = closestContainerWithRoom['contentsWeight'] + itemReport['itemWeight'];
+
             local transfer = {
                 destinationContainerObject = closestContainerWithRoom['containerObject'],
                 destinationContainer = closestContainerWithRoom['container'],
