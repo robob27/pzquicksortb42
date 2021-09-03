@@ -1,21 +1,15 @@
---TODO: revert RPQuickSort to local after done debugging
---TODO: quick sort all items from source inventory of same type on single quick sort instead of just 1
---TODO: reimplement RPQuickSort.CATEGORY_BASED_TRANSFERS_FOR_ITEM
---TODO: experiment with Mod Options more.. something kinda fucky going on
---TODO: test distance sorting more thoroughly
-
-RPQuickSort = {};
+local RPQuickSort = {};
 
 RPQuickSort.MENU_ENTRY_QUICK_SORT = "Quick Sort";
 RPQuickSort.MENU_ENTRY_QUICK_SORT_ALL = "Quick Sort All";
 
 RPQuickSort.CATEGORY_BASED_TRANSFERS = false;
-RPQuickSort.CATEGORY_BASED_TRANSFERS_FOR_ITEM = false;
 RPQuickSort.CATEGORY_ITEM_COUNT_THRESHOLD = 3;
 RPQuickSort.CATEGORY_ITEM_PERCENTAGE_THRESHOLD = 0.51;
 RPQuickSort.FOOD_OFF_AGE_THRESHOLD = 99999;
 RPQuickSort.SPECIAL_FOOD_TREATMENT = true;
 RPQuickSort.PLAYER_SAYS_ERRORS = true;
+RPQuickSort.SORT_RANGE = 7;
 
 RPQuickSort.onModOptionsApply = function()
     RPQuickSort.setValuesFromModOptions();
@@ -24,6 +18,9 @@ end
 -- stores the actual values for each option, which is set by the index of the selected option
 -- indexes of options in MOD_OPTIONS_SETTINGS should match indexes of the actual values in MOD_OPTIONS_VALUES
 RPQuickSort.MOD_OPTIONS_VALUES = {
+    SORT_RANGE = {
+        3, 4, 5, 6, 7, 8, 9, 10,
+    },
     CATEGORY_BASED_TRANSFERS = {
         false, true,
     },
@@ -49,6 +46,13 @@ RPQuickSort.MOD_OPTIONS_VALUES = {
 
 RPQuickSort.MOD_OPTIONS_SETTINGS = {
     options_data = {
+        SORT_RANGE = {
+            "3 Tiles", "4 Tiles", "5 Tiles", "6 Tiles", "7 Tiles", "8 Tiles", "9 Tiles", "10 Tiles",
+            name = "The range of tiles that will be searched for containers to sort to.",
+            tooltip = "Enable/disable category based transfers which are attempted if no container is found with the same exact item, but there is a container found with several items of same category.\n\nDoes not attempt to sort items with category \"Item\" in this way because it is used so broadly, unless enabled below.",
+            default = 5,
+            OnApplyInGame = RPQuickSort.onModOptionsApply,
+        },
         CATEGORY_BASED_TRANSFERS = {
             "No", "Yes",
             name = "Enable/disable Category-based Transfers",
@@ -74,7 +78,7 @@ RPQuickSort.MOD_OPTIONS_SETTINGS = {
             "1%", "5%", "10%", "20%", "30%", "40%", "50%", "51%", "60%", "70%", "80%", "90%", "100%",
             name = "Category Item Percentage Threshold",
             tooltip = "The minimum percentage of items in a container with at least category_item_count_threshold items required to be considered as matching a category.",
-            default = 3,
+            default = 8,
             OnApplyInGame = RPQuickSort.onModOptionsApply,
         },
         FOOD_OFF_AGE_THRESHOLD = {
@@ -104,21 +108,34 @@ RPQuickSort.MOD_OPTIONS_SETTINGS = {
     mod_fullname = 'Quick Sort Build 41',
 };
 
+RPQuickSort.retrieveSettingsKeys = function(valuesObject)
+    local settingsKeys = {};
+
+    for key, _ in pairs(valuesObject) do
+        settingsKeys[#settingsKeys + 1] = key;
+    end
+
+    return settingsKeys;
+end
+
 if ModOptions and ModOptions.getInstance then
     ModOptions:getInstance(RPQuickSort.MOD_OPTIONS_SETTINGS);
 end
 
 RPQuickSort.setValuesFromModOptions = function()
     if ModOptions and ModOptions.getInstance then
+        local settingsToSync = RPQuickSort.retrieveSettingsKeys(RPQuickSort.MOD_OPTIONS_VALUES);
         local modOptionsValues = RPQuickSort.MOD_OPTIONS_SETTINGS.options_data;
 
-        RPQuickSort.CATEGORY_BASED_TRANSFERS = RPQuickSort.MOD_OPTIONS_VALUES['CATEGORY_BASED_TRANSFERS'][modOptionsValues['CATEGORY_BASED_TRANSFERS'].value];
-        RPQuickSort.CATEGORY_BASED_TRANSFERS_FOR_ITEM = RPQuickSort.MOD_OPTIONS_VALUES['CATEGORY_BASED_TRANSFERS_FOR_ITEM'][modOptionsValues['CATEGORY_BASED_TRANSFERS_FOR_ITEM'].value];
-        RPQuickSort.CATEGORY_ITEM_COUNT_THRESHOLD = RPQuickSort.MOD_OPTIONS_VALUES['CATEGORY_ITEM_COUNT_THRESHOLD'][modOptionsValues['CATEGORY_ITEM_COUNT_THRESHOLD'].value];
-        RPQuickSort.CATEGORY_ITEM_PERCENTAGE_THRESHOLD = RPQuickSort.MOD_OPTIONS_VALUES['CATEGORY_ITEM_PERCENTAGE_THRESHOLD'][modOptionsValues['CATEGORY_ITEM_PERCENTAGE_THRESHOLD'].value];
-        RPQuickSort.FOOD_OFF_AGE_THRESHOLD = RPQuickSort.MOD_OPTIONS_VALUES['FOOD_OFF_AGE_THRESHOLD'][modOptionsValues['FOOD_OFF_AGE_THRESHOLD'].value];
-        RPQuickSort.SPECIAL_FOOD_TREATMENT = RPQuickSort.MOD_OPTIONS_VALUES['SPECIAL_FOOD_TREATMENT'][modOptionsValues['SPECIAL_FOOD_TREATMENT'].value];
-        RPQuickSort.PLAYER_SAYS_ERRORS = RPQuickSort.MOD_OPTIONS_VALUES['PLAYER_SAYS_ERRORS'][modOptionsValues['PLAYER_SAYS_ERRORS'].value];
+        if modOptionsValues ~= nil then
+            for _, settingsKey in ipairs(settingsToSync) do
+                local newValue = RPQuickSort.MOD_OPTIONS_VALUES[settingsKey][modOptionsValues[settingsKey].value];
+
+                if newValue ~= nil then
+                    RPQuickSort[settingsKey] = newValue;
+                end
+            end
+        end
     end
 end
 
@@ -239,8 +256,8 @@ end
 RPQuickSort.findContainerObjectsInRange = function(player)
     -- search for containers within 10 squares of the player on the same z level
     -- returns container objects
-    local xrange = 10;
-    local yrange = 10;
+    local xrange = RPQuickSort.SORT_RANGE;
+    local yrange = RPQuickSort.SORT_RANGE;
     local playerPosition = player:getCurrentSquare();
     local playerx = playerPosition:getX();
     local playery = playerPosition:getY();
@@ -440,6 +457,9 @@ RPQuickSort.createTransfers = function(player, transferData, containerReports, q
             if #eligibleContainers > 0 then
                 local sortedEligibleContainers = table.sort(eligibleContainers, function(a,b) return a['distanceToContainer'] < b['distanceToContainer'] end);
                 local closestContainerWithRoom = sortedEligibleContainers[1];
+
+                -- update the contentsWeight on the containerReport in case it runs out of room before the next transfer
+                closestContainerWithRoom['contentsWeight'] = closestContainerWithRoom['contentsWeight'] + itemReport['itemWeight'];
     
                 local transfer = {
                     destinationContainerObject = closestContainerWithRoom['containerObject'],
@@ -463,7 +483,8 @@ RPQuickSort.findContainersThatCanReceiveItemsByCategory = function(player, itemR
 
     for _, containerReport in ipairs(containerReports) do
         local percentageOfCategoryInContainer = containerReport['categoryPercentageMap'][itemReport['itemCategory']];
-        if percentageOfCategoryInContainer ~= nil and percentageOfCategoryInContainer >= RPQuickSort.CATEGORY_ITEM_PERCENTAGE_THRESHOLD then
+        if percentageOfCategoryInContainer ~= nil and percentageOfCategoryInContainer >= RPQuickSort.CATEGORY_ITEM_PERCENTAGE_THRESHOLD and
+        (RPQuickSort.CATEGORY_BASED_TRANSFERS_FOR_ITEM or itemReport['itemCategory'] ~= "Item") then
             if RPQuickSort.containerCanFitItem(itemReport, containerReport) then
                 local adjacentTile = RPQuickSort.findTileAdjacentToContainer(player, containerReport['containerSquare']);
 
@@ -505,7 +526,8 @@ end
 --TODO: make quickSortItems an array of all items of the same type when sort type is not all
 RPQuickSort.onQuickSort = function(worlditems, player, quickSortItems, sortType)
     if sortType == RPQuickSort.MENU_ENTRY_QUICK_SORT then
-        quickSortItems = {quickSortItems};
+        local itemType = quickSortItems:getType();
+        quickSortItems = RPQuickSort.convertArrayList(quickSortItems:getContainer():getItemsFromType(itemType));
     elseif sortType == RPQuickSort.MENU_ENTRY_QUICK_SORT_ALL then
         quickSortItems = RPQuickSort.convertArrayList(quickSortItems:getContainer():getItems());
     end
