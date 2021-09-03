@@ -1,3 +1,6 @@
+--TODO: do tests with cookie, candy, cupcakes, beef jerky. not sorting right with categories for some reason?
+--TODO: check distance sorting, it goes back and forth between containers a lot..
+
 local RPQuickSort = {};
 
 RPQuickSort.MENU_ENTRY_QUICK_SORT = "Quick Sort";
@@ -328,7 +331,6 @@ RPQuickSort.createContainerReport = function(player, destinationContainer, desti
     local categoryToAmountMap = {};
     local typeToAmountMap = {};
     local categoryPercentageMap = {};
-    local totalItems = 0;
     local destinationContainerSquare = destinationContainerObject:getSquare();
 
     for _, containerItem in ipairs(containerItems) do
@@ -345,20 +347,39 @@ RPQuickSort.createContainerReport = function(player, destinationContainer, desti
 
         categoryToAmountMap[itemCategory] = categoryToAmountMap[itemCategory] + 1;
         typeToAmountMap[itemType] = typeToAmountMap[itemType] + 1;
-        totalItems = totalItems + 1;
     end
 
-    local eligibleForCategoryTransfer = totalItems >= RPQuickSort.CATEGORY_ITEM_COUNT_THRESHOLD;
+    local eligibleForCategoryTransfer = #containerItems >= RPQuickSort.CATEGORY_ITEM_COUNT_THRESHOLD;
 
     -- skip doing math on the contents if it doesn't have enough items to be considered for category based transfers
     if eligibleForCategoryTransfer then
         for category, amount in pairs(categoryToAmountMap) do
-            categoryPercentageMap[category] = amount / totalItems;
+            categoryPercentageMap[category] = amount / #containerItems;
         end
     end
 
+    local containerType = destinationContainer:getType();
+    local isFridge = containerType == "fridge";
+    local isFreezer = containerType == "freezer";
+
+    -- set a fake temperature depending on if fridge, freezer or neither so we can sort for the coldest container
+    -- we do this because fridges and freezers technically have the same temperature right now
+    -- if special food treatment is off, make fake temp the same for all containers so it doesn't affect sorting
+    local fakeTemperature = 20;
+
+    if isFridge and RPQuickSort.SPECIAL_FOOD_TREATMENT then
+        fakeTemperature = 0
+    end
+    
+    if isFreezer and RPQuickSort.SPECIAL_FOOD_TREATMENT then
+        fakeTemperature = -20
+    end
+
     local containerReport = {
-        totalItems = totalItems,
+        isFridge = isFridge,
+        isFreezer = isFreezer,
+        fakeTemperature = fakeTemperature,
+        totalItems = #containerItems,
         contentsWeight = contentsWeight,
         containerCapacity = destinationContainerCapacity,
         categoryPercentageMap = categoryPercentageMap,
@@ -394,7 +415,6 @@ RPQuickSort.createQuickSortItemReports = function(player, quickSortItems)
                 itemCategory = itemCategory,
                 itemWeight = item:getWeight(),
                 itemContainer = item:getContainer(),
-                isFood = RPQuickSort.SPECIAL_FOOD_TREATMENT and isFood,
                 isPerishable = isFood and RPQuickSort.foodItemIsPerishable(item),
                 isFreezable = isFood and item:canBeFrozen(),
                 item = item,
@@ -458,12 +478,19 @@ RPQuickSort.createTransfers = function(player, transferData, containerReports, q
             eligibleContainers = RPQuickSort.findContainersThatCanReceiveItemsByCategory(player, itemReport, containerReports);
 
             if #eligibleContainers > 0 then
-                local sortedEligibleContainers = table.sort(eligibleContainers, function(a,b) return a['distanceToContainer'] < b['distanceToContainer'] end);
+                local sortedEligibleContainers = nil;
+
+                if itemReport['isFreezable'] then
+                    sortedEligibleContainers = table.sort(eligibleContainers, RPQuickSort.sortContainersForCategorySortingFreezables);
+                else
+                    sortedEligibleContainers = table.sort(eligibleContainers, RPQuickSort.sortContainersForCategorySorting);
+                end
+
                 local closestContainerWithRoom = sortedEligibleContainers[1];
 
                 -- update the contentsWeight on the containerReport in case it runs out of room before the next transfer
                 closestContainerWithRoom['contentsWeight'] = closestContainerWithRoom['contentsWeight'] + itemReport['itemWeight'];
-    
+
                 local transfer = {
                     destinationContainerObject = closestContainerWithRoom['containerObject'],
                     destinationContainer = closestContainerWithRoom['container'],
@@ -471,7 +498,7 @@ RPQuickSort.createTransfers = function(player, transferData, containerReports, q
                     adjacentTile = closestContainerWithRoom['adjacentTile'],
                     itemToTransfer = itemReport['item'],
                 };
-    
+
                 transfers[#transfers + 1] = transfer;
             end
         end
@@ -481,19 +508,35 @@ RPQuickSort.createTransfers = function(player, transferData, containerReports, q
     return transferData;
 end
 
+RPQuickSort.sortContainersForCategorySorting = function(a, b)
+    return a['distanceToContainer'] < b['distanceToContainer'];
+end
+
+RPQuickSort.sortContainersForCategorySortingFreezables = function(a, b)
+    return a['fakeTemperature'] < b['fakeTemperature'] or a['distanceToContainer'] < b['distanceToContainer'];
+end
+
 RPQuickSort.findContainersThatCanReceiveItemsByCategory = function(player, itemReport, containerReports)
     local eligibleContainers = {};
 
     for _, containerReport in ipairs(containerReports) do
-        local percentageOfCategoryInContainer = containerReport['categoryPercentageMap'][itemReport['itemCategory']];
-        if percentageOfCategoryInContainer ~= nil and percentageOfCategoryInContainer >= RPQuickSort.CATEGORY_ITEM_PERCENTAGE_THRESHOLD and
-        (RPQuickSort.CATEGORY_BASED_TRANSFERS_FOR_ITEM or itemReport['itemCategory'] ~= "Item") then
-            if RPQuickSort.containerCanFitItem(itemReport, containerReport) then
-                local adjacentTile = RPQuickSort.findTileAdjacentToContainer(player, containerReport['containerSquare']);
+        -- disregard all food related stuff if special food treatment is off
+        local isPerishable = RPQuickSort.SPECIAL_FOOD_TREATMENT and itemReport['isPerishable'];
+        local containerIsFridge =  RPQuickSort.SPECIAL_FOOD_TREATMENT and containerReport['isFridge'];
+        local containerIsFreezer =  RPQuickSort.SPECIAL_FOOD_TREATMENT and containerReport['isFreezer'];
 
-                if adjacentTile ~= nil then
-                    containerReport['adjacentTile'] = adjacentTile;
-                    eligibleContainers[#eligibleContainers + 1] = containerReport;
+        if (not isPerishable and not containerIsFridge and not containerIsFreezer) or (isPerishable and (containerIsFridge or containerIsFreezer)) then
+            local percentageOfCategoryInContainer = containerReport['categoryPercentageMap'][itemReport['itemCategory']];
+
+            if percentageOfCategoryInContainer ~= nil and percentageOfCategoryInContainer >= RPQuickSort.CATEGORY_ITEM_PERCENTAGE_THRESHOLD and
+            (RPQuickSort.CATEGORY_BASED_TRANSFERS_FOR_ITEM or itemReport['itemCategory'] ~= "Item") then
+                if RPQuickSort.containerCanFitItem(itemReport, containerReport) then
+                    local adjacentTile = RPQuickSort.findTileAdjacentToContainer(player, containerReport['containerSquare']);
+
+                    if adjacentTile ~= nil then
+                        containerReport['adjacentTile'] = adjacentTile;
+                        eligibleContainers[#eligibleContainers + 1] = containerReport;
+                    end
                 end
             end
         end
@@ -523,10 +566,28 @@ RPQuickSort.findContainersThatCanReceiveItemsByType = function(player, itemRepor
 end
 
 RPQuickSort.containerCanFitItem = function(itemReport, containerReport)
-    return (itemReport['itemWeight'] + containerReport['contentsWeight']) <= containerReport['containerCapacity'];
+    local itemWeight = tonumber(string.format("%.3f", itemReport['itemWeight']));
+    local containerContentsWeight = tonumber(string.format("%.3f", containerReport['contentsWeight']));
+    local containerCapacity = containerReport['containerCapacity'];
+
+    return (itemWeight + containerContentsWeight) <= containerCapacity;
 end
 
---TODO: make quickSortItems an array of all items of the same type when sort type is not all
+-- returns true if the itemType was found in the itemTypeSet on the container report
+RPQuickSort.filterContainerReport = function(quickSortItemReports, destinationContainer)
+    local sameItemFoundByType = false;
+
+    for itemType, _ in pairs(quickSortItemReports['itemTypeSet']) do
+        local quickSortItemsInContainer = RPQuickSort.convertArrayList(destinationContainer:getItemsFromType(itemType));
+
+        if #quickSortItemsInContainer > 0 then
+            sameItemFoundByType = true;
+        end
+    end
+
+    return sameItemFoundByType;
+end
+
 RPQuickSort.onQuickSort = function(worlditems, player, quickSortItems, sortType)
     if sortType == RPQuickSort.MENU_ENTRY_QUICK_SORT then
         local itemType = quickSortItems:getType();
@@ -558,6 +619,23 @@ RPQuickSort.onQuickSort = function(worlditems, player, quickSortItems, sortType)
     -- lets create a map of the containers the same way we create a map of the items
     for _, destinationContainerObject in ipairs(destinationContainerObjects) do
         local destinationContainer = destinationContainerObject:getItemContainer();
+        local containerType = destinationContainer:getType();
+        local isFridge = containerType == "fridge";
+        local freezerContainer = nil;
+
+        if isFridge then
+            freezerContainer = destinationContainerObject:getContainerByType('freezer');
+
+            if freezerContainer ~= nil then
+                local freezerContainerReport = RPQuickSort.createContainerReport(player, freezerContainer, destinationContainerObject);
+                local includeFreezerContainer = RPQuickSort.filterContainerReport(quickSortItemReports, freezerContainer);
+
+                if freezerContainerReport ~= nil and (RPQuickSort.CATEGORY_BASED_TRANSFERS or includeFreezerContainer) then
+                    destinationContainerReports[#destinationContainerReports + 1] = freezerContainerReport;
+                end
+            end
+        end
+
         local containerReport = RPQuickSort.createContainerReport(player, destinationContainer, destinationContainerObject);
         local sameItemFoundByType = false;
 
