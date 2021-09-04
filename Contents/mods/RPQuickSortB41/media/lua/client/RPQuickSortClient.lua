@@ -73,8 +73,8 @@ RPQuickSort.MOD_OPTIONS_SETTINGS = {
         },
         IGNORE_ITEM_CATEGORY = {
             "No", "Yes",
-            name = "If enabled, will not count items with category \"Item\" when calculating percentage of item categories present in a container.",
-            tooltip = "Enable/disable category based transfers for items with category \"Item\".",
+            name = "Ignore Item Category",
+            tooltip = "If enabled, will not count items with category \"Item\" when calculating percentage of item categories present in a container.",
             default = 1,
             OnApplyInGame = RPQuickSort.onModOptionsApply,
         },
