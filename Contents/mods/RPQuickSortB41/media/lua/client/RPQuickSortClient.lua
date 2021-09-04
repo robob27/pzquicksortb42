@@ -152,6 +152,30 @@ RPQuickSort.convertArrayList = function(arrayList)
     return itemTable;
 end
 
+-- credit to Michal Kottman for spairs https://stackoverflow.com/a/15706820
+RPQuickSort.spairs = function(mTable, order)
+    -- collect the keys
+    local keys = {};
+    for k in pairs(mTable) do keys[#keys+1] = k end
+
+    -- if order function given, sort by it by passing the table and keys a, b,
+    -- otherwise just sort the keys
+    if order then
+        table.sort(keys, function(a,b) return order(mTable, a, b) end);
+    else
+        table.sort(keys);
+    end
+
+    -- return the iterator function
+    local i = 0;
+    return function()
+        i = i + 1;
+        if keys[i] then
+            return keys[i], mTable[keys[i]];
+        end
+    end
+end
+
 RPQuickSort.createInventoryMenu = function(playerIndex, context, items)
     local player = getSpecificPlayer(playerIndex);
 
@@ -302,14 +326,6 @@ RPQuickSort.foodItemIsPerishable = function(foodItem)
     end
 end
 
-RPQuickSort.sortTransfersByDistance = function(transferData)
-    local sortedTransfers = table.sort(transferData['transfers'], function(a,b) return a['distanceToContainer'] < b['distanceToContainer'] end);
-
-    transferData['transfers'] = sortedTransfers;
-
-    return transferData;
-end
-
 RPQuickSort.noTransfersToComplete = function(transferData)
     if #transferData['transfers'] == 0 then
         return true;
@@ -436,17 +452,17 @@ end
 RPQuickSort.queueTransferActions = function(player, transferData)
     local playerInventory = player:getInventory();
 
-    for _, transfer in ipairs(transferData['transfers']) do
+    for _, transfer in RPQuickSort.spairs(transferData['transfers'], RPQuickSort.sortContainersForCategorySorting) do
         local adjacentTile = transfer['adjacentTile'];
         local itemToTransfer = transfer['itemToTransfer'];
 
         ISTimedActionQueue.add(ISWalkToTimedAction:new(player, getWorld():getCell():getGridSquare((adjacentTile:getX()), adjacentTile:getY(), adjacentTile:getZ())));
 
         if luautils.haveToBeTransfered(player, itemToTransfer) then
-            ISTimedActionQueue.add(RPQuickSortAction:new(player, itemToTransfer, transferData['sourceContainer'], playerInventory));
+            ISTimedActionQueue.add(ISInventoryTransferAction:new(player, itemToTransfer, transferData['sourceContainer'], playerInventory));
         end
 
-        ISTimedActionQueue.add(RPQuickSortAction:new(player, itemToTransfer, playerInventory, transfer['destinationContainer']));
+        ISTimedActionQueue.add(ISInventoryTransferAction:new(player, itemToTransfer, playerInventory, transfer['destinationContainer']));
     end
 end
 
@@ -458,8 +474,12 @@ RPQuickSort.createTransfers = function(player, transferData, containerReports, q
 
         -- find matches by type first
         if #eligibleContainers > 0 then
-            local sortedEligibleContainers = table.sort(eligibleContainers, function(a,b) return a['distanceToContainer'] < b['distanceToContainer'] end);
-            local closestContainerWithRoom = sortedEligibleContainers[1];
+            local closestContainerWithRoom = nil;
+
+            for _, container in RPQuickSort.spairs(eligibleContainers, RPQuickSort.sortContainersForCategorySorting) do
+                closestContainerWithRoom = container;
+                break;
+            end
 
             -- update the contentsWeight on the containerReport in case it runs out of room before the next transfer
             closestContainerWithRoom['contentsWeight'] = closestContainerWithRoom['contentsWeight'] + itemReport['itemWeight'];
@@ -478,15 +498,19 @@ RPQuickSort.createTransfers = function(player, transferData, containerReports, q
             eligibleContainers = RPQuickSort.findContainersThatCanReceiveItemsByCategory(player, itemReport, containerReports);
 
             if #eligibleContainers > 0 then
-                local sortedEligibleContainers = nil;
+                local closestContainerWithRoom = nil;
 
                 if itemReport['isFreezable'] then
-                    sortedEligibleContainers = table.sort(eligibleContainers, RPQuickSort.sortContainersForCategorySortingFreezables);
+                    for _, container in RPQuickSort.spairs(eligibleContainers, RPQuickSort.sortContainersForCategorySortingFreezables) do
+                        closestContainerWithRoom = container;
+                        break;
+                    end
                 else
-                    sortedEligibleContainers = table.sort(eligibleContainers, RPQuickSort.sortContainersForCategorySorting);
+                    for _, container in RPQuickSort.spairs(eligibleContainers, RPQuickSort.sortContainersForCategorySorting) do
+                        closestContainerWithRoom = container;
+                        break;
+                    end
                 end
-
-                local closestContainerWithRoom = sortedEligibleContainers[1];
 
                 -- update the contentsWeight on the containerReport in case it runs out of room before the next transfer
                 closestContainerWithRoom['contentsWeight'] = closestContainerWithRoom['contentsWeight'] + itemReport['itemWeight'];
@@ -508,12 +532,12 @@ RPQuickSort.createTransfers = function(player, transferData, containerReports, q
     return transferData;
 end
 
-RPQuickSort.sortContainersForCategorySorting = function(a, b)
-    return a['distanceToContainer'] < b['distanceToContainer'];
+RPQuickSort.sortContainersForCategorySorting = function(t, a, b)
+    return t[a]['distanceToContainer'] < t[b]['distanceToContainer'];
 end
 
-RPQuickSort.sortContainersForCategorySortingFreezables = function(a, b)
-    return a['fakeTemperature'] < b['fakeTemperature'] or a['distanceToContainer'] < b['distanceToContainer'];
+RPQuickSort.sortContainersForCategorySortingFreezables = function(t, a, b)
+    return t[a]['fakeTemperature'] < t[b]['fakeTemperature'] or t[a]['distanceToContainer'] < t[b]['distanceToContainer'];
 end
 
 RPQuickSort.findContainersThatCanReceiveItemsByCategory = function(player, itemReport, containerReports)
@@ -530,8 +554,15 @@ RPQuickSort.findContainersThatCanReceiveItemsByCategory = function(player, itemR
 
             if percentageOfCategoryInContainer ~= nil and percentageOfCategoryInContainer >= RPQuickSort.CATEGORY_ITEM_PERCENTAGE_THRESHOLD and
             (RPQuickSort.CATEGORY_BASED_TRANSFERS_FOR_ITEM or itemReport['itemCategory'] ~= "Item") then
-                if RPQuickSort.containerCanFitItem(itemReport, containerReport) then
-                    local adjacentTile = RPQuickSort.findTileAdjacentToContainer(player, containerReport['containerSquare']);
+                local canFitItem = RPQuickSort.containerCanFitItem(itemReport, containerReport);
+
+                if canFitItem then
+                    local adjacentTile = containerReport['adjacentTile'];
+
+                    -- only store the adjacent tile for each container once
+                    if adjacentTile == nil then
+                        adjacentTile = RPQuickSort.findTileAdjacentToContainer(player, containerReport['containerSquare']);
+                    end
 
                     if adjacentTile ~= nil then
                         containerReport['adjacentTile'] = adjacentTile;
@@ -551,8 +582,15 @@ RPQuickSort.findContainersThatCanReceiveItemsByType = function(player, itemRepor
     for _, containerReport in ipairs(containerReports) do
         if containerReport['typeToAmountMap'][itemReport['itemType']] ~= nil then
             -- container has items with same type, check if it has room and can be reached
-            if RPQuickSort.containerCanFitItem(itemReport, containerReport) then
-                local adjacentTile = RPQuickSort.findTileAdjacentToContainer(player, containerReport['containerSquare']);
+            local canFitItem = RPQuickSort.containerCanFitItem(itemReport, containerReport);
+
+            if canFitItem then
+                local adjacentTile = containerReport['adjacentTile'];
+
+                -- only store the adjacent tile for each container once
+                if adjacentTile == nil then
+                    adjacentTile = RPQuickSort.findTileAdjacentToContainer(player, containerReport['containerSquare']);
+                end
 
                 if adjacentTile ~= nil then
                     containerReport['adjacentTile'] = adjacentTile;
@@ -566,11 +604,12 @@ RPQuickSort.findContainersThatCanReceiveItemsByType = function(player, itemRepor
 end
 
 RPQuickSort.containerCanFitItem = function(itemReport, containerReport)
-    local itemWeight = tonumber(string.format("%.3f", itemReport['itemWeight']));
-    local containerContentsWeight = tonumber(string.format("%.3f", containerReport['contentsWeight']));
+    local itemWeight = itemReport['itemWeight'];
+    local containerContentsWeight = containerReport['contentsWeight'];
     local containerCapacity = containerReport['containerCapacity'];
+    local availableSpace = containerCapacity - containerContentsWeight;
 
-    return (itemWeight + containerContentsWeight) <= containerCapacity;
+    return itemWeight <= availableSpace;
 end
 
 -- returns true if the itemType was found in the itemTypeSet on the container report
@@ -664,8 +703,6 @@ RPQuickSort.onQuickSort = function(worlditems, player, quickSortItems, sortType)
         return;
     end
 
-    transferData = RPQuickSort.sortTransfersByDistance(transferData);
-
     RPQuickSort.queueTransferActions(player, transferData);
 end
 
@@ -688,18 +725,6 @@ RPQuickSort.createInventoryObjectMenuEntry = function(player, playerIndex, conte
 
     context:addOption(RPQuickSort.MENU_ENTRY_QUICK_SORT, worlditems, RPQuickSort.onQuickSort, player, quickSortItem, RPQuickSort.MENU_ENTRY_QUICK_SORT);
     context:addOption(RPQuickSort.MENU_ENTRY_QUICK_SORT_ALL, worlditems, RPQuickSort.onQuickSort, player, quickSortItem, RPQuickSort.MENU_ENTRY_QUICK_SORT_ALL);
-end
-
-RPQuickSortAction = ISInventoryTransferAction:derive("RPQuickSortAction");
-
-function RPQuickSortAction:update()
-    if self.character ~= nil and self.destContainer ~= nil and instanceof(self.destContainer, "ItemContainer") then
-        if self.destContainer:getParent() ~= nil and self.destContainer:getParent():getX() ~= nil then
-            self.character:faceLocation(self.destContainer:getParent():getX(), self.destContainer:getParent():getY());
-        end
-    end
-
-    ISInventoryTransferAction.update(self);
 end
 
 Events.OnPreFillInventoryObjectContextMenu.Add(RPQuickSort.createInventoryMenu);
