@@ -1,6 +1,3 @@
---TODO: do tests with cookie, candy, cupcakes, beef jerky. not sorting right with categories for some reason?
---TODO: check distance sorting, it goes back and forth between containers a lot..
-
 local RPQuickSort = {};
 
 RPQuickSort.MENU_ENTRY_QUICK_SORT = "Quick Sort";
@@ -8,6 +5,7 @@ RPQuickSort.MENU_ENTRY_QUICK_SORT_ALL = "Quick Sort All";
 
 RPQuickSort.CATEGORY_BASED_TRANSFERS = false;
 RPQuickSort.CATEGORY_ITEM_COUNT_THRESHOLD = 3;
+RPQuickSort.IGNORE_ITEM_CATEGORY = false;
 RPQuickSort.CATEGORY_ITEM_PERCENTAGE_THRESHOLD = 0.51;
 RPQuickSort.FOOD_OFF_AGE_THRESHOLD = 99999;
 RPQuickSort.SPECIAL_FOOD_TREATMENT = true;
@@ -28,6 +26,9 @@ RPQuickSort.MOD_OPTIONS_VALUES = {
         false, true,
     },
     CATEGORY_BASED_TRANSFERS_FOR_ITEM = {
+        false, true,
+    },
+    IGNORE_ITEM_CATEGORY = {
         false, true,
     },
     CATEGORY_ITEM_COUNT_THRESHOLD = {
@@ -66,6 +67,13 @@ RPQuickSort.MOD_OPTIONS_SETTINGS = {
         CATEGORY_BASED_TRANSFERS_FOR_ITEM = {
             "No", "Yes",
             name = "Enable/disable Category-based Transfers for \"Item\" Category",
+            tooltip = "Enable/disable category based transfers for items with category \"Item\".",
+            default = 1,
+            OnApplyInGame = RPQuickSort.onModOptionsApply,
+        },
+        IGNORE_ITEM_CATEGORY = {
+            "No", "Yes",
+            name = "If enabled, will not count items with category \"Item\" when calculating percentage of item categories present in a container.",
             tooltip = "Enable/disable category based transfers for items with category \"Item\".",
             default = 1,
             OnApplyInGame = RPQuickSort.onModOptionsApply,
@@ -361,7 +369,11 @@ RPQuickSort.createContainerReport = function(player, destinationContainer, desti
             typeToAmountMap[itemType] = 0;
         end
 
-        categoryToAmountMap[itemCategory] = categoryToAmountMap[itemCategory] + 1;
+        -- do not count item category towards amount/percentage if ignoring the category
+        if itemCategory ~= "Item" or not RPQuickSort.IGNORE_ITEM_CATEGORY then
+            categoryToAmountMap[itemCategory] = categoryToAmountMap[itemCategory] + 1;
+        end
+
         typeToAmountMap[itemType] = typeToAmountMap[itemType] + 1;
     end
 
