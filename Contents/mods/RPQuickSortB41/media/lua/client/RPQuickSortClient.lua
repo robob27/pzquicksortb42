@@ -3,14 +3,15 @@ local RPQuickSort = {};
 RPQuickSort.MENU_ENTRY_QUICK_SORT = "Quick Sort";
 RPQuickSort.MENU_ENTRY_QUICK_SORT_ALL = "Quick Sort All";
 
+RPQuickSort.SORT_RANGE = 7;
 RPQuickSort.CATEGORY_BASED_TRANSFERS = false;
+RPQuickSort.STACK_COUNTS_AS_ONE = true;
 RPQuickSort.CATEGORY_ITEM_COUNT_THRESHOLD = 3;
 RPQuickSort.IGNORE_ITEM_CATEGORY = false;
 RPQuickSort.CATEGORY_ITEM_PERCENTAGE_THRESHOLD = 0.51;
 RPQuickSort.FOOD_OFF_AGE_THRESHOLD = 99999;
 RPQuickSort.SPECIAL_FOOD_TREATMENT = true;
 RPQuickSort.PLAYER_SAYS_ERRORS = true;
-RPQuickSort.SORT_RANGE = 7;
 
 RPQuickSort.onModOptionsApply = function()
     RPQuickSort.setValuesFromModOptions();
@@ -23,6 +24,9 @@ RPQuickSort.MOD_OPTIONS_VALUES = {
         3, 4, 5, 6, 7, 8, 9, 10,
     },
     CATEGORY_BASED_TRANSFERS = {
+        false, true,
+    },
+    STACK_COUNTS_AS_ONE = {
         false, true,
     },
     CATEGORY_BASED_TRANSFERS_FOR_ITEM = {
@@ -62,6 +66,13 @@ RPQuickSort.MOD_OPTIONS_SETTINGS = {
             name = "Enable/disable Category-based Transfers",
             tooltip = "Enable/disable category based transfers which are attempted if no container is found with the same exact item, but there is a container found with several items of same category.\n\nDoes not attempt to sort items with category \"Item\" in this way because it is used so broadly, unless enabled below.",
             default = 1,
+            OnApplyInGame = RPQuickSort.onModOptionsApply,
+        },
+        STACK_COUNTS_AS_ONE = {
+            "No", "Yes",
+            name = "Stack Counts as One Item",
+            tooltip = "When enabled, a stack counts as a single item when calculating percentage of categories in a container.\n\nThis prevents, for example, 200 cigarettes from basically guaranteeing that the container is considered a \"Food\" container.",
+            default = 2,
             OnApplyInGame = RPQuickSort.onModOptionsApply,
         },
         CATEGORY_BASED_TRANSFERS_FOR_ITEM = {
@@ -357,32 +368,47 @@ RPQuickSort.createContainerReport = function(player, destinationContainer, desti
     local categoryPercentageMap = {};
     local destinationContainerSquare = destinationContainerObject:getSquare();
 
+    -- if RPQuickSort.STACK_COUNTS_AS_ONE is false, typeCollapsedCategoryCount should == #containerItem
+    -- otherwise, it should be a smaller number representing the count of items in each category, but
+    -- treats a stack of items with the same type as 1 item of that category. i.e. 200 cigarettes = 1 Food
+    local typeCollapsedCategoryCount = 0;
+
     for _, containerItem in ipairs(containerItems) do
         local itemCategory = containerItem:getCategory();
         local itemType = containerItem:getType();
+        local firstTimeEncounteringCategory = categoryToAmountMap[itemCategory] == nil;
+        local firstTimeEncounteringType = typeToAmountMap[itemType] == nil;
+        local shouldTrackThisCategory = itemCategory ~= "Item" or not RPQuickSort.IGNORE_ITEM_CATEGORY;
+        local shouldIncrementCategoryCount = firstTimeEncounteringType or not RPQuickSort.STACK_COUNTS_AS_ONE;
 
-        if categoryToAmountMap[itemCategory] == nil then
-            categoryToAmountMap[itemCategory] = 0;
+
+        if shouldTrackThisCategory then
+            if firstTimeEncounteringCategory then
+                categoryToAmountMap[itemCategory] = 0;
+            end
+
+            if shouldIncrementCategoryCount then
+                typeCollapsedCategoryCount = typeCollapsedCategoryCount + 1;
+                categoryToAmountMap[itemCategory] = categoryToAmountMap[itemCategory] + 1;
+            end
         end
 
-        if typeToAmountMap[itemType] == nil then
+        if firstTimeEncounteringType then
             typeToAmountMap[itemType] = 0;
-        end
-
-        -- do not count item category towards amount/percentage if ignoring the category
-        if itemCategory ~= "Item" or not RPQuickSort.IGNORE_ITEM_CATEGORY then
-            categoryToAmountMap[itemCategory] = categoryToAmountMap[itemCategory] + 1;
         end
 
         typeToAmountMap[itemType] = typeToAmountMap[itemType] + 1;
     end
 
-    local eligibleForCategoryTransfer = #containerItems >= RPQuickSort.CATEGORY_ITEM_COUNT_THRESHOLD;
+    local eligibleForCategoryTransfer = #containerItems >= RPQuickSort.CATEGORY_ITEM_COUNT_THRESHOLD and #categoryToAmountMap >= 1;
 
     -- skip doing math on the contents if it doesn't have enough items to be considered for category based transfers
     if eligibleForCategoryTransfer then
         for category, amount in pairs(categoryToAmountMap) do
-            categoryPercentageMap[category] = amount / #containerItems;
+            -- need to not divide by container items if stack counts as one
+            -- category amounts should be correct now.. if stack counts as one then
+            -- we need to add up all amounts from each category and divide against that
+            categoryPercentageMap[category] = amount / typeCollapsedCategoryCount;
         end
     end
 
