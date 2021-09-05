@@ -373,6 +373,9 @@ RPQuickSort.createContainerReport = function(player, destinationContainer, desti
     -- treats a stack of items with the same type as 1 item of that category. i.e. 200 cigarettes = 1 Food
     local typeCollapsedCategoryCount = 0;
 
+    -- track the number of categories so we can avoid some operations below if no eligible categories are found
+    local numCategories = 0;
+
     for _, containerItem in ipairs(containerItems) do
         local itemCategory = containerItem:getCategory();
         local itemType = containerItem:getType();
@@ -381,9 +384,9 @@ RPQuickSort.createContainerReport = function(player, destinationContainer, desti
         local shouldTrackThisCategory = itemCategory ~= "Item" or not RPQuickSort.IGNORE_ITEM_CATEGORY;
         local shouldIncrementCategoryCount = firstTimeEncounteringType or not RPQuickSort.STACK_COUNTS_AS_ONE;
 
-
         if shouldTrackThisCategory then
             if firstTimeEncounteringCategory then
+                numCategories = numCategories + 1;
                 categoryToAmountMap[itemCategory] = 0;
             end
 
@@ -400,7 +403,7 @@ RPQuickSort.createContainerReport = function(player, destinationContainer, desti
         typeToAmountMap[itemType] = typeToAmountMap[itemType] + 1;
     end
 
-    local eligibleForCategoryTransfer = #containerItems >= RPQuickSort.CATEGORY_ITEM_COUNT_THRESHOLD and #categoryToAmountMap >= 1;
+    local eligibleForCategoryTransfer = #containerItems >= RPQuickSort.CATEGORY_ITEM_COUNT_THRESHOLD and numCategories >= 0;
 
     -- skip doing math on the contents if it doesn't have enough items to be considered for category based transfers
     if eligibleForCategoryTransfer then
