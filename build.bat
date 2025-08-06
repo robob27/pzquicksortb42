@@ -15,8 +15,13 @@ if not exist common mkdir common
 REM I guess we have to copy media/mod.info/poster into the 42 folder. Copy - not move. This is the whole reason this script exists now.
 if not exist 42 mkdir 42
 xcopy media 42\media\ /S /E /Y
+
+REM Copy images
 copy mod.info 42\
 copy poster.png 42\
+copy modoptions.png 42\
+copy ingame.png 42\
+copy translations.png 42\
 
 REM Now we need to update create the common/42 folders inside Contents/mods/%MODNAME%
 cd ../..
