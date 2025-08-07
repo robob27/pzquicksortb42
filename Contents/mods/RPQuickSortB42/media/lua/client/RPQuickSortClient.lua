@@ -10,6 +10,7 @@ end
 
 RPQuickSort.MENU_ENTRY_QUICK_SORT = RPQuickSort.getTranslation("menu_entry_quick_sort")
 RPQuickSort.MENU_ENTRY_QUICK_SORT_ALL = RPQuickSort.getTranslation("menu_entry_quick_sort_all")
+RPQuickSort.MENU_ENTRY_QUICK_SORT_CATEGORY = "QUICK_SORT_CATEGORY"
 
 -- Default values for mod settings
 RPQuickSort.SORT_RANGE = 7
@@ -659,12 +660,30 @@ RPQuickSort.filterContainerReport = function(quickSortItemReports, destinationCo
     return sameItemFoundByType
 end
 
-RPQuickSort.onQuickSort = function(worlditems, player, quickSortItems, sortType)
+RPQuickSort.getItemsFromDisplayCategory = function(container, displayCategory)
+    local items = container:getItems()
+    local filteredItems = {}
+
+    for i = 0, items:size() - 1 do
+        local item = items:get(i)
+        if item:getDisplayCategory() == displayCategory then
+            filteredItems[#filteredItems + 1] = item
+        end
+    end
+
+    return filteredItems
+end
+
+RPQuickSort.onQuickSort = function(worlditems, player, quickSortItem, sortType)
+    local quickSortItems
+
     if sortType == RPQuickSort.MENU_ENTRY_QUICK_SORT then
-        local itemType = quickSortItems:getType()
-        quickSortItems = RPQuickSort.convertArrayList(quickSortItems:getContainer():getItemsFromType(itemType))
+        local itemType = quickSortItem:getType()
+        quickSortItems = RPQuickSort.convertArrayList(quickSortItem:getContainer():getItemsFromType(itemType))
     elseif sortType == RPQuickSort.MENU_ENTRY_QUICK_SORT_ALL then
-        quickSortItems = RPQuickSort.convertArrayList(quickSortItems:getContainer():getItems())
+        quickSortItems = RPQuickSort.convertArrayList(quickSortItem:getContainer():getItems())
+    elseif sortType == RPQuickSort.MENU_ENTRY_QUICK_SORT_CATEGORY then
+        quickSortItems = RPQuickSort.getItemsFromDisplayCategory(quickSortItem:getContainer(), quickSortItem:getDisplayCategory())
     end
 
     local destinationContainerObjects = RPQuickSort.findContainerObjectsInRange(player)
@@ -747,16 +766,20 @@ end
 RPQuickSort.itemIsEligibleForQuickSort = function(player, quickSortItem, quickSortItemType)
     if not quickSortItem:isFavorite() and not player:isEquipped(quickSortItem) and quickSortItemType ~= "KeyRing" then
         return true
-    else
-        return false
     end
+
+    return false
 end
 
 RPQuickSort.createInventoryObjectMenuEntry = function(player, playerIndex, context, quickSortItem)
     local worlditems = nil
 
+    -- quickSortItem is guaranteed to be a single item here
+    local itemDisplayCategory = quickSortItem:getDisplayCategory()
+
     context:addOption(RPQuickSort.MENU_ENTRY_QUICK_SORT, worlditems, RPQuickSort.onQuickSort, player, quickSortItem, RPQuickSort.MENU_ENTRY_QUICK_SORT)
     context:addOption(RPQuickSort.MENU_ENTRY_QUICK_SORT_ALL, worlditems, RPQuickSort.onQuickSort, player, quickSortItem, RPQuickSort.MENU_ENTRY_QUICK_SORT_ALL)
+    context:addOption(RPQuickSort.MENU_ENTRY_QUICK_SORT .. " <" .. itemDisplayCategory .. ">", worlditems, RPQuickSort.onQuickSort, player, quickSortItem, RPQuickSort.MENU_ENTRY_QUICK_SORT_CATEGORY)
 end
 
 -- Add context menu for Quick Sort
