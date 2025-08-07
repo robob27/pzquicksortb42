@@ -360,21 +360,21 @@ RPQuickSort.createContainerReport = function(player, destinationContainer, desti
     local categoryPercentageMap = {}
     local destinationContainerSquare = destinationContainerObject:getSquare()
 
-    -- if RPQuickSort.STACK_COUNTS_AS_ONE is false, typeCollapsedCategoryCount should == #containerItem
+    -- if RPQuickSort.STACK_COUNTS_AS_ONE is false, typeCollapsedItemCountForCategory should == #containerItem
     -- otherwise, it should be a smaller number representing the count of items in each category, but
     -- treats a stack of items with the same type as 1 item of that category. i.e. 200 cigarettes = 1 Food
-    local typeCollapsedCategoryCount = 0
+    local typeCollapsedItemCountForCategory = 0
 
     -- track the number of categories so we can avoid some operations below if no eligible categories are found
     local numCategories = 0
 
     for _, containerItem in ipairs(containerItems) do
-        local itemCategory = containerItem:getCategory()
+        local itemCategory = containerItem:getDisplayCategory()
         local itemType = containerItem:getType()
         local firstTimeEncounteringCategory = categoryToAmountMap[itemCategory] == nil
         local firstTimeEncounteringType = typeToAmountMap[itemType] == nil
         local shouldTrackThisCategory = itemCategory ~= "Item" or not RPQuickSort.IGNORE_ITEM_CATEGORY
-        local shouldIncrementCategoryCount = firstTimeEncounteringType or not RPQuickSort.STACK_COUNTS_AS_ONE
+        local shouldIncrementItemCountForCategory = firstTimeEncounteringType or not RPQuickSort.STACK_COUNTS_AS_ONE
 
         if shouldTrackThisCategory then
             if firstTimeEncounteringCategory then
@@ -382,8 +382,8 @@ RPQuickSort.createContainerReport = function(player, destinationContainer, desti
                 categoryToAmountMap[itemCategory] = 0
             end
 
-            if shouldIncrementCategoryCount then
-                typeCollapsedCategoryCount = typeCollapsedCategoryCount + 1
+            if shouldIncrementItemCountForCategory then
+                typeCollapsedItemCountForCategory = typeCollapsedItemCountForCategory + 1
                 categoryToAmountMap[itemCategory] = categoryToAmountMap[itemCategory] + 1
             end
         end
@@ -396,14 +396,13 @@ RPQuickSort.createContainerReport = function(player, destinationContainer, desti
     end
 
     local eligibleForCategoryTransfer = #containerItems >= RPQuickSort.CATEGORY_ITEM_COUNT_THRESHOLD and numCategories >= 0
-
     -- skip doing math on the contents if it doesn't have enough items to be considered for category based transfers
     if eligibleForCategoryTransfer then
         for category, amount in pairs(categoryToAmountMap) do
             -- need to not divide by container items if stack counts as one
             -- category amounts should be correct now.. if stack counts as one then
             -- we need to add up all amounts from each category and divide against that
-            categoryPercentageMap[category] = amount / typeCollapsedCategoryCount
+            categoryPercentageMap[category] = amount / typeCollapsedItemCountForCategory
         end
     end
 
@@ -453,7 +452,7 @@ RPQuickSort.createQuickSortItemReports = function(player, quickSortItems)
         local itemType = item:getType()
 
         if RPQuickSort.itemIsEligibleForQuickSort(player, item, itemType) then
-            local itemCategory = item:getCategory()
+            local itemCategory = item:getDisplayCategory()
             local isFood = item:IsFood() or itemCategory == "Food"
 
             itemTypeSet[itemType] = true
