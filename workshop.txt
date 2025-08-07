@@ -10,6 +10,7 @@ description=
 description=More Details/Features:
 description=- Several configurable options in game settings under Mods -> Quick Sort
 description=- Supports all languages currently supported by the game.
+description=- If no containers with the item are found, it will search for containers with items in the same category as the item you're Quick Sorting (with configurable thresholds), and transfer all non-favorited, non-equipped items from the same source inventory to those containers. This behavior can be toggled on and off in the settings.
 description=- It is possible to queue multiple "Quick Sort" actions back to back to quickly sort large amounts of items.
 description=- Multiple containers will be used if multiple containers are nearby that contain the item, but one container cannot fit all of the items being sorted.
 description=- "From the same source" inventory means if you, for example, have a Book in both your main inventory and a backpack, and you use Quick Sort on the one in your main inventory, the one in your backpack will not be transferred. This applies vice-versa as well.
