@@ -2,14 +2,14 @@ local RPQuickSort = {}
 
 RPQuickSort.UNIQUE_ID = "3542556795" -- unique identifier for this mod, used for saving settings
 
-local function getTranslation(keyFragment)
+RPQuickSort.getTranslation = function(keyFragment)
     -- This function is a placeholder for translation logic
     -- In a real mod, you would implement this to return the translated string for the given key
     return getText("UI_" .. RPQuickSort.UNIQUE_ID .. "_" .. keyFragment)
 end
 
-RPQuickSort.MENU_ENTRY_QUICK_SORT = getTranslation("menu_entry_quick_sort")
-RPQuickSort.MENU_ENTRY_QUICK_SORT_ALL = getTranslation("menu_entry_quick_sort_all")
+RPQuickSort.MENU_ENTRY_QUICK_SORT = RPQuickSort.getTranslation("menu_entry_quick_sort")
+RPQuickSort.MENU_ENTRY_QUICK_SORT_ALL = RPQuickSort.getTranslation("menu_entry_quick_sort_all")
 
 -- Default values for mod settings
 RPQuickSort.SORT_RANGE = 7
@@ -23,93 +23,93 @@ RPQuickSort.SPECIAL_FOOD_TREATMENT = true
 RPQuickSort.PLAYER_SAYS_ERRORS = true
 
 -- Configuration for mod options using the new B42 system
-local function RPQuickSortConfig()
+RPQuickSort.initConfig = function()
     -- Create the options object with our mod's unique ID
-    local options = PZAPI.ModOptions:create(RPQuickSort.UNIQUE_ID, getTranslation("mod_name"))
+    local options = PZAPI.ModOptions:create(RPQuickSort.UNIQUE_ID, RPQuickSort.getTranslation("mod_name"))
 
     -- General Settings
-    options:addTitle(getTranslation("general_settings_header"))
+    options:addTitle(RPQuickSort.getTranslation("general_settings_header"))
     RPQuickSort.configSortRange = options:addSlider(
         "SORT_RANGE",
-        getTranslation("sort_range_name"),
+        RPQuickSort.getTranslation("sort_range_name"),
         3, 10, 1,
         RPQuickSort.SORT_RANGE,
-        getTranslation("sort_range_tooltip")
+        RPQuickSort.getTranslation("sort_range_tooltip")
     )
 
     RPQuickSort.configPlayerSaysErrors = options:addTickBox(
         "PLAYER_SAYS_ERRORS",
-        getTranslation("player_says_errors_name"),
+        RPQuickSort.getTranslation("player_says_errors_name"),
         RPQuickSort.PLAYER_SAYS_ERRORS,
-        getTranslation("player_says_errors_tooltip")
+        RPQuickSort.getTranslation("player_says_errors_tooltip")
     )
 
     options:addSeparator()
 
     -- Category Based Settings
-    options:addTitle(getTranslation("category_based_settings_header"))
+    options:addTitle(RPQuickSort.getTranslation("category_based_settings_header"))
 
     RPQuickSort.configCategoryBasedTransfers = options:addTickBox(
         "CATEGORY_BASED_TRANSFERS",
-        getTranslation("category_based_transfers_name"),
+        RPQuickSort.getTranslation("category_based_transfers_name"),
         RPQuickSort.CATEGORY_BASED_TRANSFERS,
-        getTranslation("category_based_transfers_tooltip")
+        RPQuickSort.getTranslation("category_based_transfers_tooltip")
     )
 
     RPQuickSort.configStackCountsAsOne = options:addTickBox(
         "STACK_COUNTS_AS_ONE",
-        getTranslation("stack_counts_as_one_name"),
+        RPQuickSort.getTranslation("stack_counts_as_one_name"),
         RPQuickSort.STACK_COUNTS_AS_ONE,
-        getTranslation("stack_counts_as_one_tooltip")
+        RPQuickSort.getTranslation("stack_counts_as_one_tooltip")
     )
 
     RPQuickSort.configCategoryBasedTransfersForItem = options:addTickBox(
         "CATEGORY_BASED_TRANSFERS_FOR_ITEM",
-        getTranslation("category_transfers_for_item_category_name"),
+        RPQuickSort.getTranslation("category_transfers_for_item_category_name"),
         false,
-        getTranslation("category_transfers_for_item_category_tooltip")
+        RPQuickSort.getTranslation("category_transfers_for_item_category_tooltip")
     )
 
     RPQuickSort.configIgnoreItemCategory = options:addTickBox(
         "IGNORE_ITEM_CATEGORY",
-        getTranslation("ignore_item_category_name"),
+        RPQuickSort.getTranslation("ignore_item_category_name"),
         RPQuickSort.IGNORE_ITEM_CATEGORY,
-        getTranslation("ignore_item_category_tooltip")
+        RPQuickSort.getTranslation("ignore_item_category_tooltip")
     )
 
     options:addSeparator()
 
     -- Category Threshold Settings
-    options:addTitle(getTranslation("category_threshold_settings_header"))
+    options:addTitle(RPQuickSort.getTranslation("category_threshold_settings_header"))
 
     -- Category Item Count Threshold
     RPQuickSort.configCategoryItemCountThreshold = options:addSlider(
         "CATEGORY_ITEM_COUNT_THRESHOLD",
-        getTranslation("category_item_count_threshold_name"),
+        RPQuickSort.getTranslation("category_item_count_threshold_name"),
         1, 10, 1,
         RPQuickSort.CATEGORY_ITEM_COUNT_THRESHOLD,
-        getTranslation("category_item_count_threshold_tooltip")
+        RPQuickSort.getTranslation("category_item_count_threshold_tooltip")
     )
 
     -- Category Item Percentage Threshold
     RPQuickSort.configCategoryItemPercentageThreshold = options:addSlider(
         "CATEGORY_ITEM_PERCENTAGE_THRESHOLD",
-        getTranslation("category_item_percentage_threshold_name"),
+        RPQuickSort.getTranslation("category_item_percentage_threshold_name"),
         0.01, 1, 0.01,
         RPQuickSort.CATEGORY_ITEM_PERCENTAGE_THRESHOLD,
-        getTranslation("category_item_percentage_threshold_tooltip")
+        RPQuickSort.getTranslation("category_item_percentage_threshold_tooltip")
     )
 
     options:addSeparator()
 
     -- Food Settings
-    options:addTitle(getTranslation("food_settings_header"))
+    options:addTitle(RPQuickSort.getTranslation("food_settings_header"))
 
     RPQuickSort.configSpecialFoodTreatment = options:addTickBox(
         "SPECIAL_FOOD_TREATMENT",
-        getTranslation("special_food_treatment_name"),
+        RPQuickSort.getTranslation("special_food_treatment_name"),
         RPQuickSort.SPECIAL_FOOD_TREATMENT,
-        getTranslation("special_food_treatment_tooltip")
+        RPQuickSort.getTranslation("special_food_treatment_tooltip")
     )
 
     options.apply = function()
@@ -671,14 +671,14 @@ RPQuickSort.onQuickSort = function(worlditems, player, quickSortItems, sortType)
     local destinationContainerObjects = RPQuickSort.findContainerObjectsInRange(player)
 
     if destinationContainerObjects == nil or #destinationContainerObjects == 0 then
-        RPQuickSort.playerSay(player, getTranslation("player_error_no_containers"))
+        RPQuickSort.playerSay(player, RPQuickSort.getTranslation("player_error_no_containers"))
         return
     end
 
     local quickSortItemReports = RPQuickSort.createQuickSortItemReports(player, quickSortItems)
 
     if #quickSortItemReports['quickSortItemMap'] == 0 then
-        RPQuickSort.playerSay(player, getTranslation("player_error_nothing_to_sort"))
+        RPQuickSort.playerSay(player, RPQuickSort.getTranslation("player_error_nothing_to_sort"))
         return
     end
 
@@ -725,14 +725,14 @@ RPQuickSort.onQuickSort = function(worlditems, player, quickSortItems, sortType)
     end
 
     if #destinationContainerReports == 0 then
-        RPQuickSort.playerSay(player, getTranslation("player_error_nowhere_to_put"))
+        RPQuickSort.playerSay(player, RPQuickSort.getTranslation("player_error_nowhere_to_put"))
         return
     end
 
     transferData = RPQuickSort.createTransfers(player, transferData, destinationContainerReports, quickSortItemReports)
 
     if RPQuickSort.noTransfersToComplete(transferData) then
-        RPQuickSort.playerSay(player, getTranslation("player_error_no_transfers_to_complete"))
+        RPQuickSort.playerSay(player, RPQuickSort.getTranslation("player_error_no_transfers_to_complete"))
         return
     end
 
@@ -763,4 +763,4 @@ end
 -- Add context menu for Quick Sort
 Events.OnPreFillInventoryObjectContextMenu.Add(RPQuickSort.createInventoryMenu)
 
-RPQuickSortConfig()
+RPQuickSort.initConfig()
