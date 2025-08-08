@@ -330,20 +330,27 @@ end
 
 RPQuickSort.foodItemIsPerishable = function(foodItem)
     local foodOffAgeMax = foodItem:getOffAgeMax()
+    local isRotten = false
 
-    if foodItem:isRotten() or foodOffAgeMax > RPQuickSort.FOOD_OFF_AGE_THRESHOLD then
-        return false
-    else
-        return true
+    if foodItem.isRotten then
+        isRotten = foodItem:isRotten()
+    elseif foodItem.IsRotten then
+        isRotten = foodItem:IsRotten()
     end
+
+    if isRotten or foodOffAgeMax > RPQuickSort.FOOD_OFF_AGE_THRESHOLD then
+        return false
+    end
+
+    return true
 end
 
 RPQuickSort.noTransfersToComplete = function(transferData)
     if #transferData['transfers'] == 0 then
         return true
-    else
-        return false
     end
+
+    return false
 end
 
 RPQuickSort.createContainerReport = function(player, destinationContainer, destinationContainerObject)
@@ -459,13 +466,16 @@ RPQuickSort.createQuickSortItemReports = function(player, quickSortItems)
             itemTypeSet[itemType] = true
             itemCategorySet[itemCategory] = true
 
+            local isPerishable = isFood and RPQuickSort.foodItemIsPerishable(item)
+            local isFreezable = isPerishable and item.canBeFrozen ~= nil and item:canBeFrozen() or false
+
             local quickSortItemMapEntry = {
                 itemType = itemType,
                 itemCategory = itemCategory,
                 itemWeight = item:getWeight(),
                 itemContainer = item:getContainer(),
-                isPerishable = isFood and RPQuickSort.foodItemIsPerishable(item),
-                isFreezable = isFood and item:canBeFrozen(),
+                isPerishable = isPerishable,
+                isFreezable = isFreezable,
                 item = item,
             }
 
